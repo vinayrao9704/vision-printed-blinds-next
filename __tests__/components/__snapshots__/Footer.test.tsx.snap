@@ -1,0 +1,186 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Footer matches its snapshot 1`] = `
+<div>
+  <footer
+    class="footer"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="footer__grid"
+      >
+        <div
+          class="footer__brand"
+        >
+          <div
+            class="footer__logo"
+          >
+            <img
+              alt="Vision Printed Blinds"
+              class="footer__logo-img"
+              data-nimg="1"
+              decoding="async"
+              height="60"
+              loading="lazy"
+              src="/_next/image?url=%2Flogo.png&w=384&q=75"
+              srcset="/_next/image?url=%2Flogo.png&w=256&q=75 1x, /_next/image?url=%2Flogo.png&w=384&q=75 2x"
+              style="color: transparent;"
+              width="190"
+            />
+          </div>
+          <p
+            class="footer__tagline"
+          >
+            PRINT. COVER. TRANSFORM.
+          </p>
+          <p
+            class="footer__location"
+          >
+            <span
+              class="maple"
+            >
+              🍁
+            </span>
+             Edmonton, Alberta, Canada
+          </p>
+          <div
+            class="footer__contact"
+          >
+            <a
+              href="mailto:info@visionprintedblinds.ca"
+            >
+              info@visionprintedblinds.ca
+            </a>
+          </div>
+        </div>
+        <div
+          class="footer__nav"
+        >
+          <h4>
+            Pages
+          </h4>
+          <ul>
+            <li>
+              <a
+                href="/"
+              >
+                Home
+              </a>
+            </li>
+            <li>
+              <a
+                href="/custom"
+              >
+                Custom Printing
+              </a>
+            </li>
+            <li>
+              <a
+                href="/shop"
+              >
+                Shop All Blinds
+              </a>
+            </li>
+            <li>
+              <a
+                href="/gallery"
+              >
+                Gallery
+              </a>
+            </li>
+            <li>
+              <a
+                href="/measure-guide"
+              >
+                Measuring Guide
+              </a>
+            </li>
+            <li>
+              <a
+                href="/about"
+              >
+                About & FAQ
+              </a>
+            </li>
+            <li>
+              <a
+                href="/quote"
+              >
+                Get a Quote
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div
+          class="footer__services"
+        >
+          <h4>
+            Products
+          </h4>
+          <ul>
+            <li>
+              Custom Printed Roller Blinds
+            </li>
+            <li>
+              Blackout Blinds
+            </li>
+            <li>
+              Solar Shades
+            </li>
+            <li>
+              Zebra Blinds
+            </li>
+            <li>
+              Curtains & Drapes
+            </li>
+            <li>
+              Motorized Blinds
+            </li>
+            <li>
+              Vertical Blinds
+            </li>
+            <li>
+              Natural Shades
+            </li>
+          </ul>
+        </div>
+        <div
+          class="footer__cta-col"
+        >
+          <h4>
+            Get Started
+          </h4>
+          <p>
+            No prices listed — every blind is custom made to order.
+          </p>
+          <a
+            class="btn btn--gold"
+            href="/quote"
+            style="width: 100%; justify-content: center; margin-bottom: 10px;"
+          >
+            Get a Free Quote
+          </a>
+          <a
+            class="btn btn--outline-white"
+            href="/custom"
+            style="width: 100%; justify-content: center;"
+          >
+            Try Preview Tool
+          </a>
+        </div>
+      </div>
+      <div
+        class="footer__bottom"
+      >
+        <p>
+          © 
+          2026
+           Vision Printed Blinds. All Rights Reserved. | Edmonton, Alberta, Canada
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+`;

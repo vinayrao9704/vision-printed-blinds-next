@@ -1,0 +1,131 @@
+import { test, expect } from '@playwright/test';
+import { ROUTES, blockOpenCV, isHamburgerOnScreen } from './helpers';
+
+function expectedColumnCount(width: number): number {
+  if (width <= 480) return 1;
+  if (width <= 768) return 2;
+  if (width <= 1200) return 3;
+  return 4;
+}
+
+test.describe('navigation shows the right layout for the viewport', () => {
+  test('desktop shows the full nav links, mobile/tablet show the hamburger', async ({ page }) => {
+    await page.goto('/');
+    const width = page.viewportSize()!.width;
+    const desktopLinks = page.locator('.nav__links');
+    const hamburger = page.locator('.nav__hamburger');
+
+    if (width >= 1025) {
+      await expect(desktopLinks).toBeVisible();
+      await expect(hamburger).toBeHidden();
+    } else {
+      await expect(hamburger).toBeVisible();
+      await expect(desktopLinks).toBeHidden();
+    }
+  });
+
+  test('BUG: on phone-width viewports the hamburger is pushed off-screen (nav__actions never hides)', async ({ page }) => {
+    const width = page.viewportSize()!.width;
+    test.skip(width >= 1025 || width > 480, 'this overflow only manifests at phone widths — see styles.css .nav__actions');
+
+    await page.goto('/');
+    const onScreen = await isHamburgerOnScreen(page);
+    expect(onScreen, 'styles.css: .nav__actions (flex-shrink:0, no mobile media query) overflows the nav bar and pushes the hamburger off-screen').toBe(true);
+  });
+
+  test('on narrow viewports, the hamburger opens and closes the mobile menu', async ({ page }) => {
+    const width = page.viewportSize()!.width;
+    test.skip(width >= 1025, 'hamburger only exists below the 1024px breakpoint');
+
+    await page.goto('/');
+    test.skip(!(await isHamburgerOnScreen(page)), 'hamburger is off-screen at this width — see the dedicated BUG test above');
+
+    const hamburger = page.getByRole('button', { name: /toggle menu/i });
+    const mobileMenu = page.locator('.nav__mobile');
+
+    await expect(mobileMenu).not.toHaveClass(/\bopen\b/);
+    await hamburger.click();
+    await expect(mobileMenu).toHaveClass(/\bopen\b/);
+    await hamburger.click();
+    await expect(mobileMenu).not.toHaveClass(/\bopen\b/);
+  });
+});
+
+test.describe('no horizontal overflow on any page', () => {
+  // If Quote fails here at phone widths: page.css's .quote-layout collapses
+  // to a single column correctly at this breakpoint (grid-template-columns:
+  // 1fr), but CSS Grid items default to min-width:auto, so a descendant that
+  // can't shrink below ~360-400px (the form card's fixed internal padding +
+  // content) prevents the grid track itself from shrinking to fit the
+  // viewport. Standard fix: min-width: 0 on .quote-form-col (and
+  // .quote-sidebar-col) — not applied here per the brief.
+  for (const route of ROUTES) {
+    test(`${route.name} has no horizontal scroll`, async ({ page }) => {
+      await blockOpenCV(page);
+      await page.goto(route.path);
+      const { scrollWidth, clientWidth } = await page.evaluate(() => ({
+        scrollWidth: document.documentElement.scrollWidth,
+        clientWidth: document.documentElement.clientWidth,
+      }));
+      // small tolerance for scrollbar/rounding
+      expect(scrollWidth).toBeLessThanOrEqual(clientWidth + 2);
+    });
+  }
+});
+
+test.describe('images load correctly and are not visibly broken/stretched', () => {
+  test('home page images all have naturalWidth > 0 and reasonable aspect handling', async ({ page }) => {
+    await page.goto('/');
+    const images = page.locator('img:visible');
+    const count = await images.count();
+    expect(count).toBeGreaterThan(0);
+
+    for (let i = 0; i < count; i++) {
+      const img = images.nth(i);
+      // Most images use next/image's default lazy loading, so a below-the-
+      // fold image (e.g. the footer logo on this long page) genuinely hasn't
+      // been requested yet until it's scrolled near the viewport — that's
+      // correct behavior, not a broken image. Scroll to each one first.
+      await img.scrollIntoViewIfNeeded();
+      await expect.poll(() => img.evaluate((el: HTMLImageElement) => el.naturalWidth), {
+        message: `image ${i} (src=${await img.getAttribute('src')}) failed to load`,
+      }).toBeGreaterThan(0);
+    }
+  });
+});
+
+test.describe('touch targets are at least 44px tall on mobile', () => {
+  test('primary CTA buttons meet the 44px minimum touch target height', async ({ page }) => {
+    const width = page.viewportSize()!.width;
+    test.skip(width > 480, 'touch-target sizing only enforced on phone-width viewports');
+
+    await page.goto('/');
+    const ctas = page.locator('.hero__ctas a, .cta-final__btns a');
+    const count = await ctas.count();
+    expect(count).toBeGreaterThan(0);
+    for (let i = 0; i < count; i++) {
+      const box = await ctas.nth(i).boundingBox();
+      expect(box?.height ?? 0).toBeGreaterThanOrEqual(44);
+    }
+  });
+});
+
+test.describe('grid layouts change column count at the defined breakpoints', () => {
+  test('shop products grid', async ({ page }) => {
+    await page.goto('/shop');
+    const width = page.viewportSize()!.width;
+    const columns = await page.locator('#productsGrid').evaluate(
+      (el) => getComputedStyle(el).gridTemplateColumns.split(' ').length
+    );
+    expect(columns).toBe(expectedColumnCount(width));
+  });
+
+  test('about "why choose us" grid', async ({ page }) => {
+    await page.goto('/about');
+    const width = page.viewportSize()!.width;
+    const columns = await page.locator('.why-grid').evaluate(
+      (el) => getComputedStyle(el).gridTemplateColumns.split(' ').length
+    );
+    expect(columns).toBe(expectedColumnCount(width));
+  });
+});
