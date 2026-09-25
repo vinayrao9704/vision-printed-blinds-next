@@ -27,6 +27,26 @@ describe('GalleryGrid', () => {
     expect(img).toHaveAttribute('src', expect.stringContaining('kids-graffiti-boy.jpg'));
   });
 
+  it('sizes a photo box to the image\'s own aspect ratio instead of cropping it (no fixed height, no fill)', () => {
+    render(<GalleryGrid />);
+    const img = screen.getByAltText('A Little Angel') as HTMLImageElement;
+    // next/image only sets width/height attributes when NOT using `fill` —
+    // their presence here confirms the box grows to the photo instead of
+    // being force-cropped into the placeholder's fixed 200px/300px height.
+    expect(img).toHaveAttribute('width', '1024');
+    expect(img).toHaveAttribute('height', '1536');
+    expect(img.closest('.gallery-item__visual')).toHaveClass('gallery-item__visual--photo');
+  });
+
+  it('portals the lightbox to document.body (stays visible above the masonry grid regardless of stacking quirks there)', async () => {
+    const user = userEvent.setup();
+    render(<GalleryGrid />);
+    await user.click(screen.getByText('Sunflower Field'));
+    const dialog = screen.getByRole('dialog');
+    expect(dialog.closest('.gallery-masonry')).toBeNull();
+    expect(dialog.parentElement).toBe(document.body);
+  });
+
   it('filters items by category', async () => {
     const user = userEvent.setup();
     render(<GalleryGrid />);

@@ -1496,6 +1496,9 @@ input, select, textarea { font-family: inherit; }
   position: relative;
 }
 .gallery-item--tall .gallery-item__visual { height: 300px; }
+/* Real photos size the box to their own aspect ratio instead of being
+   cropped to fit the fixed placeholder height above. */
+.gallery-item__visual--photo { height: auto; }
 .gallery-item__overlay {
   position: absolute;
   inset: 0;
@@ -2132,8 +2135,18 @@ input, select, textarea { font-family: inherit; }
   cursor: pointer;
   line-height: 1;
   transition: color var(--transition);
+  z-index: 1;
 }
 .lightbox__close:hover { color: var(--gold); }
+/* z-index:1 (below) isn't for ordering within the lightbox — it's needed
+   because these buttons combine position:absolute with a permanent
+   transform (for vertical centering), which promotes them to their own
+   compositing layer. Without an explicit z-index, browsers can get that
+   layer's paint order wrong relative to OTHER transformed layers elsewhere
+   on the page (e.g. a hovered .gallery-item, which also transforms) even
+   though the whole .lightbox sits in a z-index:3000 stacking context —
+   confirmed via elementsFromPoint() that the button was hit-testing behind
+   page content without this. */
 .lightbox__prev, .lightbox__next {
   position: absolute;
   top: 50%; transform: translateY(-50%);
@@ -2145,6 +2158,7 @@ input, select, textarea { font-family: inherit; }
   line-height: 1;
   transition: color var(--transition);
   padding: 16px;
+  z-index: 1;
 }
 .lightbox__prev:hover, .lightbox__next:hover { color: var(--gold); }
 .lightbox__prev { left: 20px; }
@@ -2161,6 +2175,7 @@ input, select, textarea { font-family: inherit; }
   color: rgba(255,255,255,0.7);
   background: rgba(0,0,0,0.5);
   padding: 6px 16px;
+  z-index: 1;
   border-radius: 100px;
   white-space: nowrap;
 }
