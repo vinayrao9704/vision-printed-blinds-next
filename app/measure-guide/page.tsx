@@ -37,7 +37,7 @@ export default function MeasureGuidePage() {
           <p className="page-hero__desc">A few careful measurements are all it takes for a perfect-fit blind. Follow this guide, or skip straight to a free in-person measurement with our team.</p>
           <div style={{display:'flex',gap:'12px',flexWrap:'wrap'}}>
             <Link href="/quote" className="btn btn--gold btn--lg btn--animated">Get a Free Quote</Link>
-            <Link href="/custom" className="btn btn--outline-white btn--lg">Try Preview Tool</Link>
+            <Link href="/shop" className="btn btn--outline-white btn--lg">Shop All Blinds</Link>
           </div>
         </div>
       </section>
@@ -97,7 +97,7 @@ export default function MeasureGuidePage() {
           <p className="section-desc section-desc--light">Request a free consultation and one of our team members will measure your windows in person — no charge, no obligation.</p>
           <div className="cta-final__btns">
             <Link href="/quote" className="btn btn--gold btn--xl btn--animated">Get a Free Quote</Link>
-            <Link href="/custom" className="btn btn--outline-white btn--xl">★ Try the Preview Tool</Link>
+            <Link href="/shop?tab=custom" className="btn btn--outline-white btn--xl">★ Shop Custom Printed</Link>
           </div>
         </div>
       </section>

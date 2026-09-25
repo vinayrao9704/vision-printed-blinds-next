@@ -32,7 +32,7 @@ export default function AboutPage() {
           <p className="page-hero__desc">We&apos;re passionate about transforming windows into visual statements — combining premium blind craftsmanship with high-resolution custom printing so your windows tell your story.</p>
           <div style={{display:'flex',gap:'12px',flexWrap:'wrap'}}>
             <Link href="/quote" className="btn btn--gold btn--lg btn--animated">Get a Free Quote</Link>
-            <Link href="/custom" className="btn btn--outline-white btn--lg">Try Preview Tool</Link>
+            <Link href="/shop?tab=custom" className="btn btn--outline-white btn--lg">Shop Custom Printed</Link>
           </div>
         </div>
       </section>
@@ -174,7 +174,7 @@ export default function AboutPage() {
           <p className="section-desc section-desc--light">Request a free quote and one of our team members will be in touch within one business day.</p>
           <div className="cta-final__btns">
             <Link href="/quote" className="btn btn--gold btn--xl btn--animated">Get a Free Quote</Link>
-            <Link href="/custom" className="btn btn--outline-white btn--xl">★ Try the Preview Tool</Link>
+            <Link href="/shop?tab=custom" className="btn btn--outline-white btn--xl">★ Shop Custom Printed</Link>
           </div>
         </div>
       </section>

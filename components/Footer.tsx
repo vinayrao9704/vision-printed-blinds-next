@@ -22,7 +22,6 @@ export default function Footer() {
             <h4>Pages</h4>
             <ul>
               <li><Link href="/">Home</Link></li>
-              <li><Link href="/custom">Custom Printing</Link></li>
               <li><Link href="/shop">Shop All Blinds</Link></li>
               <li><Link href="/gallery">Gallery</Link></li>
               <li><Link href="/measure-guide">Measuring Guide</Link></li>
@@ -51,8 +50,8 @@ export default function Footer() {
             <Link href="/quote" className="btn btn--gold" style={{width:'100%',justifyContent:'center',marginBottom:'10px'}}>
               Get a Free Quote
             </Link>
-            <Link href="/custom" className="btn btn--outline-white" style={{width:'100%',justifyContent:'center'}}>
-              Try Preview Tool
+            <Link href="/shop?tab=custom" className="btn btn--outline-white" style={{width:'100%',justifyContent:'center'}}>
+              Shop Custom Printed
             </Link>
           </div>
 

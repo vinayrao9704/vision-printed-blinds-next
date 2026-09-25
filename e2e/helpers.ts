@@ -9,7 +9,6 @@ export interface RouteInfo {
 
 export const ROUTES: RouteInfo[] = [
   { path: '/', name: 'Home', keySection: '#hero' },
-  { path: '/custom', name: 'Custom Printing', keySection: '#preview-tool' },
   { path: '/shop', name: 'Shop', keySection: '#shop' },
   { path: '/shop/zebra-plain', name: 'Product Detail', keySection: '.pdp-grid' },
   { path: '/gallery', name: 'Gallery', keySection: '.gallery-masonry' },
@@ -21,11 +20,11 @@ export const ROUTES: RouteInfo[] = [
 const OPENCV_URL_PATTERN = /opencv-js|opencv\.js/;
 
 /**
- * The /custom page's window-detection pipeline loads OpenCV.js (~10MB WASM)
- * from a CDN on first use. Letting that hit the real network in every test
- * that visits /custom would be slow and flaky in CI, so this aborts the
- * request — the app's own fallback path (confirmed working in earlier manual
- * testing) then takes over immediately and deterministically.
+ * Historical safety net from when window detection loaded OpenCV.js
+ * (~10MB WASM) from a CDN — that pipeline was replaced with a dependency-free
+ * heuristic long ago, and /custom itself is currently disabled and redirects
+ * home. Left in place (and still called broadly) in case either ever comes
+ * back; it's a harmless no-op otherwise since nothing requests this URL.
  */
 export async function blockOpenCV(page: Page) {
   await page.route(OPENCV_URL_PATTERN, (route) => route.abort());

@@ -69,13 +69,13 @@ export default function HomePage() {
             <p className="section-desc">From choosing your blind style to uploading your design, every step is covered.</p>
           </div>
           <div className="home-nav-cards">
-            <Link href="/custom" className="home-nav-card home-nav-card--gold animate-in">
+            <Link href="/shop?tab=custom" className="home-nav-card home-nav-card--gold animate-in">
               <div className="home-nav-card__img scene--cp-landscape" style={{position:'relative'}}><div className="blind-slats"></div></div>
               <div className="home-nav-card__body">
                 <div className="home-nav-card__tag">★ Our Specialty</div>
-                <div className="home-nav-card__title">Custom Printing &amp; Preview Tool</div>
-                <p className="home-nav-card__desc">Upload your image and see it rendered on your window — live in your browser. Then request a quote.</p>
-                <span className="home-nav-card__cta">Try the Tool →</span>
+                <div className="home-nav-card__title">Custom Printed Blinds</div>
+                <p className="home-nav-card__desc">Any photo, design, logo, or artwork — printed at full UV quality on commercial-grade blind fabric.</p>
+                <span className="home-nav-card__cta">Shop Custom Printed →</span>
               </div>
             </Link>
             <Link href="/shop" className="home-nav-card animate-in">
@@ -116,7 +116,7 @@ export default function HomePage() {
                 <li>✓ Kids themes &amp; nursery scenes</li>
               </ul>
               <div style={{display:'flex',gap:'12px',flexWrap:'wrap',marginTop:'28px'}}>
-                <Link href="/custom" className="btn btn--gold btn--lg btn--animated">★ Try the Preview Tool</Link>
+                <Link href="/shop?tab=custom" className="btn btn--gold btn--lg btn--animated">★ Shop Custom Printed</Link>
                 <Link href="/gallery" className="btn btn--outline-white btn--lg">View Gallery</Link>
               </div>
             </div>
@@ -222,7 +222,7 @@ export default function HomePage() {
             <p className="section-desc section-desc--light">Request a free quote and one of our team members will be in touch within one business day.</p>
             <div className="cta-final__btns">
               <Link href="/quote" className="btn btn--gold btn--xl btn--animated">Get a Free Quote</Link>
-              <Link href="/custom" className="btn btn--outline-white btn--xl">★ Try the Preview Tool</Link>
+              <Link href="/shop?tab=custom" className="btn btn--outline-white btn--xl">★ Shop Custom Printed</Link>
             </div>
             <div className="cta-final__contact">
               <a href="mailto:info@visionprintedblinds.ca"><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" strokeWidth="2"/><path d="M22 6l-10 7L2 6" stroke="currentColor" strokeWidth="2"/></svg>info@visionprintedblinds.ca</a>

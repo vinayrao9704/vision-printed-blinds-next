@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import BlindPreviewTool from '@/components/blind-designer/BlindPreviewTool';
 
 export const metadata: Metadata = {
@@ -23,6 +24,11 @@ const designThemes = [
 ];
 
 export default function CustomPage() {
+  // Custom Printing / preview tool is disabled for now — planned to be
+  // re-enabled later. Redirecting rather than deleting keeps the page below
+  // intact so it can come back by simply removing this redirect.
+  redirect('/');
+
   return (
     <>
       {/* PAGE HERO */}

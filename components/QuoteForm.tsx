@@ -113,7 +113,7 @@ export default function QuoteForm() {
           <div className="qf-success__icon">✓</div>
           <h3>Quote Request Sent!</h3>
           <p>Thank you — we&apos;ve received your request and will be in touch within one business day. Keep an eye on your inbox (and spam folder, just in case).</p>
-          <p>In the meantime, try our <Link href="/custom" style={{color:'var(--gold)'}}>Design Preview Tool</Link> to visualize your blind.</p>
+          <p>In the meantime, browse our <Link href="/shop?tab=custom" style={{color:'var(--gold)'}}>custom printed blinds</Link> for inspiration.</p>
         </div>
       </div>
     );

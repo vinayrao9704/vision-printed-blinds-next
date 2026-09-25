@@ -123,12 +123,11 @@ export default function Nav() {
                 <div className="mega-col mega-col--featured">
                   <h4 className="mega-col__head mega-col__head--gold">★ CUSTOM PRINTED</h4>
                   <ul>
-                    <li><Link href="/custom" className="mega-link--gold">Design Preview Tool</Link></li>
-                    <li><Link href="/custom" className="mega-link--gold">Photo Blinds</Link></li>
-                    <li><Link href="/custom" className="mega-link--gold">Landscape Prints</Link></li>
-                    <li><Link href="/custom" className="mega-link--gold">Artwork &amp; Patterns</Link></li>
-                    <li><Link href="/custom" className="mega-link--gold">Kids Designs</Link></li>
-                    <li><Link href="/custom" className="mega-link--gold">Business Branding</Link></li>
+                    <li><Link href="/shop?tab=custom" className="mega-link--gold">Photo Blinds</Link></li>
+                    <li><Link href="/shop?tab=custom" className="mega-link--gold">Landscape Prints</Link></li>
+                    <li><Link href="/shop?tab=custom" className="mega-link--gold">Artwork &amp; Patterns</Link></li>
+                    <li><Link href="/shop?tab=custom" className="mega-link--gold">Kids Designs</Link></li>
+                    <li><Link href="/shop?tab=custom" className="mega-link--gold">Business Branding</Link></li>
                   </ul>
                 </div>
               </div>
@@ -139,14 +138,13 @@ export default function Nav() {
                     <span className="section-tag" style={{margin:'0 0 6px'}}>OUR SPECIALTY</span>
                     <h3>Custom Printed Blinds</h3>
                     <p>Print any photo or artwork on your blind.</p>
-                    <Link href="/custom" className="btn btn--gold btn--sm">Try Preview Tool →</Link>
+                    <Link href="/shop?tab=custom" className="btn btn--gold btn--sm">Shop Custom Printed →</Link>
                   </div>
                 </div>
               </div>
             </div>
           </li>
 
-          <li><Link href="/custom" className={`nav__link nav__link--custom${isActive('/custom') ? ' active' : ''}`}>★ Custom Printing</Link></li>
           <li><Link href="/gallery"className={`nav__link${isActive('/gallery') ? ' active' : ''}`}>Gallery</Link></li>
           <li><Link href="/measure-guide" className={`nav__link${isActive('/measure-guide') ? ' active' : ''}`}>Measuring Guide</Link></li>
           <li><Link href="/about"  className={`nav__link${isActive('/about')   ? ' active' : ''}`}>About</Link></li>
@@ -176,7 +174,6 @@ export default function Nav() {
         <ul className="nav__mobile-links">
           <li><Link href="/">Home</Link></li>
           <li><Link href="/shop">Shop All Blinds</Link></li>
-          <li><Link href="/custom">★ Custom Printing</Link></li>
           <li><Link href="/gallery">Gallery</Link></li>
           <li><Link href="/measure-guide">Measuring Guide</Link></li>
           <li><Link href="/about">About &amp; FAQ</Link></li>

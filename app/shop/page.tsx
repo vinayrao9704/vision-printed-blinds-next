@@ -21,7 +21,7 @@ export default function ShopPage() {
           <h1 className="page-hero__title">SHOP ALL<br/><span className="text-gold">BLINDS &amp; SHADES</span></h1>
           <p className="page-hero__desc">Every blind type we offer — many available with custom printing. Filter by type, function, or feature to find your perfect window covering.</p>
           <div style={{display:'flex',gap:'12px',flexWrap:'wrap'}}>
-            <Link href="/custom" className="btn btn--gold btn--lg">★ Custom Printed Blinds</Link>
+            <Link href="/shop?tab=custom" className="btn btn--gold btn--lg">★ Custom Printed Blinds</Link>
             <Link href="/quote" className="btn btn--outline-white btn--lg">Get a Free Quote</Link>
           </div>
         </div>

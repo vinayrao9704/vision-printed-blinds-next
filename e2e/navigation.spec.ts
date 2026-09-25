@@ -27,7 +27,6 @@ test.describe('internal links resolve without 404s', () => {
 
 test.describe('active nav link highlighting', () => {
   const navPages: { path: string; linkName: string }[] = [
-    { path: '/custom', linkName: 'Custom Printing' },
     { path: '/gallery', linkName: 'Gallery' },
     { path: '/measure-guide', linkName: 'Measuring Guide' },
     { path: '/about', linkName: 'About' },
@@ -46,8 +45,7 @@ test.describe('active nav link highlighting', () => {
       await page.goto(path);
       // Scoped to .nav__links specifically (not the whole <nav>) — the
       // footer's "Pages" list and the mobile menu both happen to repeat some
-      // of the same link text (e.g. "Custom Printing") without highlighting.
-      // Substring match because the real nav link is "★ Custom Printing".
+      // of the same link text without highlighting.
       const link = page.locator('.nav__links').getByRole('link', { name: new RegExp(linkName) }).first();
       await expect(link).toHaveClass(/\bactive\b/);
     });

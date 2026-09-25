@@ -26,7 +26,7 @@ describe('Nav', () => {
 
   it('renders a link to every main page', () => {
     render(<Nav />);
-    ['Shop Blinds', 'Custom Printing', 'Gallery', 'Measuring Guide', 'About', 'Contact'].forEach((label) => {
+    ['Shop Blinds', 'Gallery', 'Measuring Guide', 'About', 'Contact'].forEach((label) => {
       expect(screen.getByRole('link', { name: new RegExp(label, 'i') })).toBeInTheDocument();
     });
   });

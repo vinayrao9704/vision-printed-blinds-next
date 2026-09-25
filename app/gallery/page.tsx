@@ -18,7 +18,7 @@ export default function GalleryPage() {
           <span className="section-tag section-tag--light">INSPIRATION</span>
           <h1 className="page-hero__title">CUSTOM BLIND<br/><span className="text-gold">GALLERY</span></h1>
           <p className="page-hero__desc">Browse real custom printed blind designs — from mountain landscapes to family photos, business branding, kids rooms, and more. Filter by category to find your inspiration.</p>
-          <Link href="/custom" className="btn btn--gold btn--lg btn--animated">★ Try the Preview Tool</Link>
+          <Link href="/shop?tab=custom" className="btn btn--gold btn--lg btn--animated">★ Shop Custom Printed</Link>
         </div>
       </section>
 
@@ -27,9 +27,9 @@ export default function GalleryPage() {
           <GalleryGrid />
           <div className="gallery-cta">
             <h3>WHAT WILL YOU PRINT?</h3>
-            <p>Upload your image and see it on your window instantly with our preview tool.</p>
+            <p>Any photo, design, logo, or artwork — printed at full UV quality on your blind.</p>
             <div style={{display:'flex',gap:'16px',justifyContent:'center',flexWrap:'wrap',marginTop:'8px'}}>
-              <Link href="/custom" className="btn btn--gold btn--lg btn--animated">Try the Preview Tool</Link>
+              <Link href="/shop?tab=custom" className="btn btn--gold btn--lg btn--animated">Shop Custom Printed</Link>
               <Link href="/quote" className="btn btn--outline-white btn--lg">Get a Free Quote</Link>
             </div>
           </div>

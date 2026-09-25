@@ -71,13 +71,6 @@ exports[`Footer matches its snapshot 1`] = `
             </li>
             <li>
               <a
-                href="/custom"
-              >
-                Custom Printing
-              </a>
-            </li>
-            <li>
-              <a
                 href="/shop"
               >
                 Shop All Blinds
@@ -164,10 +157,10 @@ exports[`Footer matches its snapshot 1`] = `
           </a>
           <a
             class="btn btn--outline-white"
-            href="/custom"
+            href="/shop?tab=custom"
             style="width: 100%; justify-content: center;"
           >
-            Try Preview Tool
+            Shop Custom Printed
           </a>
         </div>
       </div>
