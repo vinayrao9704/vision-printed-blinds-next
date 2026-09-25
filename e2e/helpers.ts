@@ -54,14 +54,10 @@ export function collectPageErrors(page: Page) {
 }
 
 /**
- * BUG (styles.css): .nav__actions (the desktop "Get a Free Quote" button) has
- * no media query hiding it below the 1024px breakpoint and is flex-shrink:0,
- * so on phone-width viewports it forces the nav's flex row to overflow,
- * pushing the hamburger button off the right edge of the screen entirely —
- * confirmed via bounding-box measurement, not just a horizontal-scrollbar
- * symptom. This makes the mobile menu unclickable on real phones. Tests that
- * need to click the hamburger use a short timeout (via this helper) rather
- * than hanging for the full default 30s retry-until-actionable window.
+ * Confirms the hamburger button is actually within the viewport bounds
+ * (not just present in the DOM) before a test tries to click it — guards
+ * against silently hanging for the full default 30s retry-until-actionable
+ * window if a future layout regression ever pushes it off-screen again.
  */
 export async function isHamburgerOnScreen(page: Page): Promise<boolean> {
   const box = await page.getByRole('button', { name: /toggle menu/i }).boundingBox();

@@ -507,6 +507,13 @@
   gap: 40px;
   align-items: start;
 }
+/* Grid items default to min-width: auto, which floors their shrink width at
+   the widest unbreakable descendant (long labels/inputs in the form, the
+   sidebar cards) rather than the 1fr track set below at phone widths — the
+   grid track refuses to shrink to fit the viewport and the page gains
+   horizontal scroll. min-width: 0 lets the track (and its content) actually
+   shrink to the available width. */
+.quote-form-col, .quote-sidebar-col { min-width: 0; }
 .quote-form-card {
   background: var(--white);
   border-radius: var(--radius-xl);

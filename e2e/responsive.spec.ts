@@ -24,13 +24,13 @@ test.describe('navigation shows the right layout for the viewport', () => {
     }
   });
 
-  test('BUG: on phone-width viewports the hamburger is pushed off-screen (nav__actions never hides)', async ({ page }) => {
+  test('the hamburger stays on-screen at phone widths (nav__actions hides instead of overflowing)', async ({ page }) => {
     const width = page.viewportSize()!.width;
-    test.skip(width >= 1025 || width > 480, 'this overflow only manifests at phone widths — see styles.css .nav__actions');
+    test.skip(width >= 1025 || width > 480, 'only relevant at phone widths — see styles.css .nav__actions');
 
     await page.goto('/');
     const onScreen = await isHamburgerOnScreen(page);
-    expect(onScreen, 'styles.css: .nav__actions (flex-shrink:0, no mobile media query) overflows the nav bar and pushes the hamburger off-screen').toBe(true);
+    expect(onScreen, 'hamburger should be within the viewport bounds').toBe(true);
   });
 
   test('on narrow viewports, the hamburger opens and closes the mobile menu', async ({ page }) => {
@@ -52,13 +52,6 @@ test.describe('navigation shows the right layout for the viewport', () => {
 });
 
 test.describe('no horizontal overflow on any page', () => {
-  // If Quote fails here at phone widths: page.css's .quote-layout collapses
-  // to a single column correctly at this breakpoint (grid-template-columns:
-  // 1fr), but CSS Grid items default to min-width:auto, so a descendant that
-  // can't shrink below ~360-400px (the form card's fixed internal padding +
-  // content) prevents the grid track itself from shrinking to fit the
-  // viewport. Standard fix: min-width: 0 on .quote-form-col (and
-  // .quote-sidebar-col) — not applied here per the brief.
   for (const route of ROUTES) {
     test(`${route.name} has no horizontal scroll`, async ({ page }) => {
       await blockOpenCV(page);
