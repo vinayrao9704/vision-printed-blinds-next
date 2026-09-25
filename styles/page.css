@@ -534,7 +534,7 @@
   margin-bottom: 8px;
 }
 .quote-form-card__head p { color: rgba(255,255,255,0.65); font-size: 14px; }
-.quote-form { padding: 36px 40px; }
+.quote-form { padding: 36px 40px; display: flex; flex-direction: column; gap: 24px; }
 
 /* Fieldsets */
 .qf-fieldset {
