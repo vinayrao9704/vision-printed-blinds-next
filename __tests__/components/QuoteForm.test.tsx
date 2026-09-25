@@ -44,7 +44,7 @@ describe('QuoteForm', () => {
     expect(screen.getByText(/type of property/i)).toBeInTheDocument();
     expect(screen.getByRole('radio', { name: /residential/i })).toBeInTheDocument();
     expect(screen.getByRole('radio', { name: /commercial/i })).toBeInTheDocument();
-    expect(screen.getByLabelText(/^area/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/^location/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/^message/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/i agree to be contacted/i)).toBeInTheDocument();
   });

@@ -146,7 +146,7 @@ export default function QuoteForm() {
             {errors.email && <p className="qf-error-msg" id="qfEmail-error">{errors.email}</p>}
           </div>
           <div className="qf-field">
-            <label className="qf-label" htmlFor="qfArea">Area</label>
+            <label className="qf-label" htmlFor="qfArea">Location</label>
             <input className="qf-input" type="text" id="qfArea" name="area" placeholder="Edmonton, AB" autoComplete="address-level2"/>
           </div>
         </div>

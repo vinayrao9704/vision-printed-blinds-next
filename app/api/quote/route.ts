@@ -34,7 +34,7 @@ function buildSummary(form: FormData): string {
     `Name: ${get('name')}`,
     `Email: ${get('email')}`,
     `Phone: ${get('phone') || '—'}`,
-    `Area: ${get('area') || '—'}`,
+    `Location: ${get('area') || '—'}`,
     `Type of property: ${get('propertyType') || '—'}`,
     '',
     `Message:`,
