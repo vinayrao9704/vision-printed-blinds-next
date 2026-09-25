@@ -21,7 +21,7 @@ describe('Footer', () => {
 
   it('renders links to every main page', () => {
     render(<Footer />);
-    ['Home', 'Shop All Blinds', 'Gallery', 'Get a Quote'].forEach((label) => {
+    ['Home', 'Blinds & Shades', 'Gallery', 'Get a Quote'].forEach((label) => {
       expect(screen.getByRole('link', { name: new RegExp(label, 'i') })).toBeInTheDocument();
     });
   });

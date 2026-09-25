@@ -12,18 +12,18 @@ jest.mock('resend', () => ({
   })),
 }));
 
-function buildRequest(fields: Record<string, string>, file?: { name: string; type: string; bytes: number }) {
+function buildRequest(fields: Record<string, string>) {
   const form = new FormData();
   for (const [key, value] of Object.entries(fields)) form.append(key, value);
-  if (file) {
-    form.append('designFile', new File([new Uint8Array(file.bytes)], file.name, { type: file.type }));
-  }
   return new Request('http://localhost/api/quote', { method: 'POST', body: form });
 }
 
 const validFields = {
   name: 'Jane Smith',
+  phone: '780-555-0100',
   email: 'jane@example.com',
+  area: 'Edmonton, AB',
+  propertyType: 'residential',
   message: 'Looking for blackout blinds for two bedroom windows.',
   consent: 'on',
 };
@@ -50,6 +50,7 @@ describe('POST /api/quote', () => {
     expect(body.errors).toMatchObject({
       name: expect.any(String),
       email: expect.any(String),
+      phone: expect.any(String),
       message: expect.any(String),
       consent: expect.any(String),
     });
@@ -79,20 +80,12 @@ describe('POST /api/quote', () => {
     expect(body.errors.consent).toMatch(/consent/i);
   });
 
-  it('rejects an oversized design file', async () => {
-    const res = await POST(buildRequest(validFields, { name: 'design.png', type: 'image/png', bytes: 21 * 1024 * 1024 }));
+  it('rejects a submission missing a phone number', async () => {
+    const res = await POST(buildRequest({ ...validFields, phone: '' }));
     const body = await res.json();
 
     expect(res.status).toBe(400);
-    expect(body.errors.designFile).toMatch(/too large/i);
-  });
-
-  it('rejects a design file with a disallowed extension', async () => {
-    const res = await POST(buildRequest(validFields, { name: 'design.exe', type: 'application/octet-stream', bytes: 100 }));
-    const body = await res.json();
-
-    expect(res.status).toBe(400);
-    expect(body.errors.designFile).toMatch(/unsupported file type/i);
+    expect(body.errors.phone).toMatch(/phone number/i);
   });
 
   it('returns a clear error when Resend is not configured, without crashing', async () => {
@@ -112,7 +105,7 @@ describe('POST /api/quote', () => {
     process.env.RESEND_API_KEY = 're_test_key';
     process.env.RESEND_FROM_EMAIL = 'quotes@visionprintedblinds.ca';
 
-    const res = await POST(buildRequest(validFields, { name: 'design.png', type: 'image/png', bytes: 100 }));
+    const res = await POST(buildRequest(validFields));
     const body = await res.json();
 
     expect(res.status).toBe(200);
@@ -123,8 +116,8 @@ describe('POST /api/quote', () => {
     expect(call.to).toBe('info@visionprintedblinds.ca');
     expect(call.replyTo).toContain('jane@example.com');
     expect(call.text).toContain('Jane Smith');
-    expect(call.attachments).toHaveLength(1);
-    expect(call.attachments[0].filename).toBe('design.png');
+    expect(call.text).toContain('Edmonton, AB');
+    expect(call.text).toContain('residential');
   });
 
   it('respects CONTACT_TO_EMAIL when set', async () => {

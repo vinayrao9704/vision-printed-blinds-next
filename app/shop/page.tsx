@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Suspense } from 'react';
+import { redirect } from 'next/navigation';
 import ShopCatalog from '@/components/ShopCatalog';
 import { products } from '@/lib/products';
 
@@ -10,6 +11,11 @@ export const metadata: Metadata = {
 };
 
 export default function ShopPage() {
+  // The aggregate catalog is disabled for now — every category has its own
+  // dedicated page under /products/[slug], and custom-printed items live at
+  // /custom-printed. Redirecting rather than deleting keeps the page below
+  // intact so it can come back by simply removing this redirect.
+  redirect('/');
   return (
     <>
       <section className="page-hero page-hero--shop">
@@ -21,8 +27,8 @@ export default function ShopPage() {
           <h1 className="page-hero__title">SHOP ALL<br/><span className="text-gold">BLINDS &amp; SHADES</span></h1>
           <p className="page-hero__desc">Every blind type we offer — many available with custom printing. Filter by type, function, or feature to find your perfect window covering.</p>
           <div style={{display:'flex',gap:'12px',flexWrap:'wrap'}}>
-            <Link href="/shop?tab=custom" className="btn btn--gold btn--lg">★ Custom Printed Blinds</Link>
-            <Link href="/quote" className="btn btn--outline-white btn--lg">Get a Free Quote</Link>
+            <Link href="/custom-printed" className="btn btn--gold btn--lg">★ Custom Printed Blinds</Link>
+            <Link href="/quote" className="btn btn--outline-white btn--lg">Get Your Free Estimate</Link>
           </div>
         </div>
       </section>

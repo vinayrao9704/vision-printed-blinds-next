@@ -1,12 +1,15 @@
 import Link from 'next/link';
-import { products } from '@/lib/products';
+import Image from 'next/image';
+import { productCategories } from '@/lib/productCategories';
 
 export default function HomePage() {
   return (
     <>
       {/* HERO */}
       <section id="hero" className="hero">
-        <div className="hero__bg"></div>
+        <div className="hero__bg">
+          <Image src="/images/hero-home.png" alt="Custom printed blinds in a living room" fill sizes="100vw" style={{ objectFit: 'cover' }} priority />
+        </div>
         <div className="hero__slats"></div>
         <div className="hero__overlay"></div>
         <div className="hero__container">
@@ -16,18 +19,10 @@ export default function HomePage() {
             <p className="hero__subtitle">Custom Printed Blinds Made From Your Image.</p>
             <p className="hero__desc">Transform ordinary windows into stunning focal points with custom-printed blinds featuring your photos, artwork, patterns, landscapes, logos, and designs.</p>
             <div className="hero__ctas">
-              <Link href="/quote" className="btn btn--gold btn--lg btn--animated">Get a Free Quote</Link>
-              <Link href="/shop" className="btn btn--outline-white btn--lg">Explore All Blinds</Link>
+              <Link href="/quote" className="btn btn--gold btn--lg btn--animated">Get Your Free Estimate</Link>
+              <Link href="/products/roller-blinds" className="btn btn--outline-white btn--lg">Explore Our Blinds</Link>
             </div>
             <p className="hero__trust"><span className="maple">🍁</span> Serving Edmonton, Alberta &amp; Canada</p>
-          </div>
-          <div className="hero__visual">
-            <div className="hero__window-frame">
-              <div className="hero__window-inner">
-                <div className="hero__blind-preview"><div className="hero__blind-slats"></div></div>
-              </div>
-              <div className="hero__window-sill"></div>
-            </div>
           </div>
         </div>
       </section>
@@ -38,7 +33,7 @@ export default function HomePage() {
           <div className="stats-bar__grid">
             <div className="stats-bar__item"><span className="stats-bar__num">500<span className="stats-bar__plus">+</span></span><span className="stats-bar__label">Custom Blinds Installed</span></div>
             <div className="stats-bar__item"><span className="stats-bar__num">100<span className="stats-bar__plus">%</span></span><span className="stats-bar__label">Custom Made to Order</span></div>
-            <div className="stats-bar__item"><span className="stats-bar__num">{products.length}</span><span className="stats-bar__label">Blind &amp; Shade Types</span></div>
+            <div className="stats-bar__item"><span className="stats-bar__num">{productCategories.length}</span><span className="stats-bar__label">Blind &amp; Shade Types</span></div>
             <div className="stats-bar__item"><span className="stats-bar__num">4.9<span className="stats-bar__plus">★</span></span><span className="stats-bar__label">Customer Rating</span></div>
           </div>
         </div>
@@ -55,47 +50,7 @@ export default function HomePage() {
             <div className="vp-card animate-in"><div className="vp-card__icon">🎨</div><h3>Custom Printing</h3><p>Any photo, design, logo, or artwork — printed at full UV quality on commercial-grade blind fabric. Your window, your image.</p></div>
             <div className="vp-card animate-in"><div className="vp-card__icon">📐</div><h3>Made to Measure</h3><p>Every blind is cut precisely to your window dimensions. Inside or outside mount — we make it fit perfectly.</p></div>
             <div className="vp-card animate-in"><div className="vp-card__icon">🇨🇦</div><h3>Edmonton Based</h3><p>Locally owned and operated in Edmonton, Alberta. We serve customers across Canada — residential and commercial.</p></div>
-            <div className="vp-card animate-in"><div className="vp-card__icon">✅</div><h3>Free Quote, No Obligation</h3><p>No listed prices — every blind is custom. Get a tailored quote within one business day. No commitment required.</p></div>
-          </div>
-        </div>
-      </section>
-
-      {/* EXPLORE THE SITE */}
-      <section className="section" style={{background:'var(--off-white)'}}>
-        <div className="container">
-          <div className="section-header animate-in">
-            <span className="section-tag">EXPLORE</span>
-            <h2 className="section-title">EVERYTHING YOU NEED<br/><span style={{color:'var(--gold)'}}>IN ONE PLACE</span></h2>
-            <p className="section-desc">From choosing your blind style to uploading your design, every step is covered.</p>
-          </div>
-          <div className="home-nav-cards">
-            <Link href="/shop?tab=custom" className="home-nav-card home-nav-card--gold animate-in">
-              <div className="home-nav-card__img scene--cp-landscape" style={{position:'relative'}}><div className="blind-slats"></div></div>
-              <div className="home-nav-card__body">
-                <div className="home-nav-card__tag">★ Our Specialty</div>
-                <div className="home-nav-card__title">Custom Printed Blinds</div>
-                <p className="home-nav-card__desc">Any photo, design, logo, or artwork — printed at full UV quality on commercial-grade blind fabric.</p>
-                <span className="home-nav-card__cta">Shop Custom Printed →</span>
-              </div>
-            </Link>
-            <Link href="/shop" className="home-nav-card animate-in">
-              <div className="home-nav-card__img scene--roller-light" style={{position:'relative'}}><div className="blind-slats"></div></div>
-              <div className="home-nav-card__body">
-                <div className="home-nav-card__tag">{products.length} Products</div>
-                <div className="home-nav-card__title">Shop All Blinds &amp; Shades</div>
-                <p className="home-nav-card__desc">Roller, zebra, blackout, solar, motorized, cellular, roman — browse and filter every style we offer.</p>
-                <span className="home-nav-card__cta">Shop Now →</span>
-              </div>
-            </Link>
-            <Link href="/gallery" className="home-nav-card animate-in">
-              <div className="home-nav-card__img scene--des-mountain" style={{position:'relative'}}><div className="blind-slats"></div></div>
-              <div className="home-nav-card__body">
-                <div className="home-nav-card__tag">12 Gallery Items</div>
-                <div className="home-nav-card__title">Custom Blind Gallery</div>
-                <p className="home-nav-card__desc">Browse real printed blind designs — mountain scenes, family photos, business branding, solar shades, and more.</p>
-                <span className="home-nav-card__cta">View Gallery →</span>
-              </div>
-            </Link>
+            <div className="vp-card animate-in"><div className="vp-card__icon">✅</div><h3>Free Estimate, No Obligation</h3><p>No listed prices — every blind is custom. Get a tailored quote within one business day. No commitment required.</p></div>
           </div>
         </div>
       </section>
@@ -116,18 +71,27 @@ export default function HomePage() {
                 <li>✓ Kids themes &amp; nursery scenes</li>
               </ul>
               <div style={{display:'flex',gap:'12px',flexWrap:'wrap',marginTop:'28px'}}>
-                <Link href="/shop?tab=custom" className="btn btn--gold btn--lg btn--animated">★ Shop Custom Printed</Link>
+                <Link href="/custom-printed" className="btn btn--gold btn--lg btn--animated">★ Shop Custom Printed</Link>
                 <Link href="/gallery" className="btn btn--outline-white btn--lg">View Gallery</Link>
               </div>
             </div>
             <div className="cp-hero__visual">
-              <div className="cp-hero__grid">
-                <div className="cp-card"><div className="scene--cp-landscape" style={{width:'100%',height:'100%',position:'relative'}}><div className="blind-slats"></div></div><span>Landscapes</span></div>
-                <div className="cp-card"><div className="scene--cp-photo" style={{width:'100%',height:'100%',position:'relative'}}><div className="blind-slats"></div></div><span>Family Photos</span></div>
-                <div className="cp-card"><div className="scene--cp-business" style={{width:'100%',height:'100%',position:'relative'}}><div className="blind-slats"></div></div><span>Branding</span></div>
-                <div className="cp-card"><div className="scene--cp-kids" style={{width:'100%',height:'100%',position:'relative'}}><div className="blind-slats"></div></div><span>Kids &amp; Nursery</span></div>
-                <div className="cp-card"><div className="scene--cp-art" style={{width:'100%',height:'100%',position:'relative'}}><div className="blind-slats"></div></div><span>Artwork</span></div>
-                <div className="cp-card"><div className="scene--cp-roller" style={{width:'100%',height:'100%',position:'relative'}}><div className="blind-slats"></div></div><span>Roller Blinds</span></div>
+              <div className="cp-wall">
+                <div className="cp-wall__photo cp-wall__photo--1">
+                  <Image src="/images/custom-print/landscape.webp" alt="Custom printed landscape blind" fill sizes="(max-width: 900px) 50vw, 30vw" style={{ objectFit: 'cover' }} />
+                </div>
+                <div className="cp-wall__photo cp-wall__photo--2">
+                  <Image src="/images/custom-print/family.webp" alt="Custom printed family photo blind" fill sizes="(max-width: 900px) 50vw, 25vw" style={{ objectFit: 'cover' }} />
+                </div>
+                <div className="cp-wall__photo cp-wall__photo--3">
+                  <Image src="/images/custom-print/abstract.webp" alt="Custom printed abstract art blind" fill sizes="(max-width: 900px) 50vw, 22vw" style={{ objectFit: 'cover' }} />
+                </div>
+                <div className="cp-wall__photo cp-wall__photo--4">
+                  <Image src="/images/custom-print/kids.webp" alt="Custom printed kids nursery blind" fill sizes="(max-width: 900px) 50vw, 25vw" style={{ objectFit: 'cover' }} />
+                </div>
+                <div className="cp-wall__photo cp-wall__photo--5">
+                  <Image src="/images/custom-print/branding.webp" alt="Custom printed business branding blind" fill sizes="(max-width: 900px) 50vw, 18vw" style={{ objectFit: 'cover' }} />
+                </div>
               </div>
             </div>
           </div>
@@ -171,7 +135,9 @@ export default function HomePage() {
               <Link href="/quote" className="btn btn--gold btn--lg btn--animated">Request a Business Quote</Link>
             </div>
             <div className="business__visual animate-in">
-              <div className="business__mockup"><div className="scene--cp-business" style={{width:'100%',height:'100%',position:'relative'}}><div className="blind-slats"></div></div></div>
+              <div className="business__mockup">
+                <Image src="/images/business-hero.png" alt="Custom branded blind in a commercial lobby" fill sizes="(max-width: 900px) 100vw, 480px" style={{ objectFit: 'cover' }} />
+              </div>
             </div>
           </div>
         </div>
@@ -219,10 +185,10 @@ export default function HomePage() {
           <div className="cta-final__inner animate-in">
             <span className="section-tag section-tag--light">GET STARTED</span>
             <h2 className="section-title section-title--white">READY TO TRANSFORM<br/><span style={{color:'var(--gold)'}}>YOUR WINDOWS?</span></h2>
-            <p className="section-desc section-desc--light">Request a free quote and one of our team members will be in touch within one business day.</p>
+            <p className="section-desc section-desc--light">Request your free estimate and one of our team members will be in touch within one business day.</p>
             <div className="cta-final__btns">
-              <Link href="/quote" className="btn btn--gold btn--xl btn--animated">Get a Free Quote</Link>
-              <Link href="/shop?tab=custom" className="btn btn--outline-white btn--xl">★ Shop Custom Printed</Link>
+              <Link href="/quote" className="btn btn--gold btn--xl btn--animated">Get Your Free Estimate</Link>
+              <Link href="/custom-printed" className="btn btn--outline-white btn--xl">★ Shop Custom Printed</Link>
             </div>
             <div className="cta-final__contact">
               <a href="mailto:info@visionprintedblinds.ca"><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" strokeWidth="2"/><path d="M22 6l-10 7L2 6" stroke="currentColor" strokeWidth="2"/></svg>info@visionprintedblinds.ca</a>

@@ -35,7 +35,7 @@ export default function ProductConfigurator({ product }: { product: Product }) {
     <section className="section pdp" style={{ background: 'var(--off-white)' }}>
       <div className="container">
         <div className="page-breadcrumb" style={{ marginBottom: '24px' }}>
-          <Link href="/">Home</Link> &rsaquo; <Link href="/shop">Shop</Link> &rsaquo; {product.name}
+          <Link href="/">Home</Link>{product.category.includes('custom') && (<> &rsaquo; <Link href="/custom-printed">Custom Printed Blinds</Link></>)} &rsaquo; {product.name}
         </div>
 
         <div className="pdp-grid">
@@ -123,7 +123,7 @@ export default function ProductConfigurator({ product }: { product: Product }) {
               <p className="pdp-measure-hint">Not sure how to measure? See our <Link href="/measure-guide">measuring guide</Link>.</p>
             </div>
 
-            <Link href={quoteHref} className="btn btn--gold btn--xl pdp-cta">Get a Free Quote</Link>
+            <Link href={quoteHref} className="btn btn--gold btn--xl pdp-cta">Get Your Free Estimate</Link>
 
             <div className="pdp-info-card">
               <h4>💬 Free Expert Consultation</h4>

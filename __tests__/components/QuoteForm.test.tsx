@@ -21,8 +21,9 @@ function mockFetchOnce(response: unknown, ok = true) {
 
 async function fillRequiredFields(user: ReturnType<typeof userEvent.setup>) {
   await user.type(screen.getByLabelText(/full name/i), 'Jane Smith');
+  await user.type(screen.getByLabelText(/phone number/i), '780-555-0100');
   await user.type(screen.getByLabelText(/email address/i), 'jane@example.com');
-  await user.type(screen.getByLabelText(/tell us more about your project/i), 'Two bedroom windows, blackout preferred.');
+  await user.type(screen.getByLabelText(/^message/i), 'Two bedroom windows, blackout preferred.');
   await user.click(screen.getByLabelText(/i agree to be contacted/i));
 }
 
@@ -35,12 +36,25 @@ describe('QuoteForm', () => {
     jest.restoreAllMocks();
   });
 
-  it('renders the required contact fields (marked with a visible asterisk, validated on submit)', () => {
+  it('renders exactly the minimal field set: name, phone, email, type of property, area, message', () => {
     render(<QuoteForm />);
     expect(screen.getByLabelText(/full name/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/phone number/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/email address/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/tell us more about your project/i)).toBeInTheDocument();
+    expect(screen.getByText(/type of property/i)).toBeInTheDocument();
+    expect(screen.getByRole('radio', { name: /residential/i })).toBeInTheDocument();
+    expect(screen.getByRole('radio', { name: /commercial/i })).toBeInTheDocument();
+    expect(screen.getByLabelText(/^area/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/^message/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/i agree to be contacted/i)).toBeInTheDocument();
+  });
+
+  it('does not render the fields removed from the old, longer form', () => {
+    render(<QuoteForm />);
+    expect(screen.queryByLabelText(/upload your design/i)).not.toBeInTheDocument();
+    expect(screen.queryByLabelText(/number of windows/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/how did you find us/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/what type of blind/i)).not.toBeInTheDocument();
   });
 
   it('blocks submission and shows field errors when required fields are empty', async () => {
@@ -52,6 +66,7 @@ describe('QuoteForm', () => {
 
     expect(await screen.findByText(/full name is required/i)).toBeInTheDocument();
     expect(screen.getByText(/email address is required/i)).toBeInTheDocument();
+    expect(screen.getByText(/phone number is required/i)).toBeInTheDocument();
     expect(screen.getByText(/tell us a bit about your project/i)).toBeInTheDocument();
     expect(screen.getByText(/please confirm you agree to be contacted/i)).toBeInTheDocument();
     expect(screen.queryByText(/quote request sent/i)).not.toBeInTheDocument();
@@ -63,8 +78,9 @@ describe('QuoteForm', () => {
     global.fetch = jest.fn();
     render(<QuoteForm />);
     await user.type(screen.getByLabelText(/full name/i), 'Jane Smith');
+    await user.type(screen.getByLabelText(/phone number/i), '780-555-0100');
     await user.type(screen.getByLabelText(/email address/i), 'not-an-email');
-    await user.type(screen.getByLabelText(/tell us more about your project/i), 'Two bedroom windows, blackout preferred.');
+    await user.type(screen.getByLabelText(/^message/i), 'Two bedroom windows, blackout preferred.');
     await user.click(screen.getByLabelText(/i agree to be contacted/i));
     await user.click(screen.getByRole('button', { name: /send my quote request/i }));
 
@@ -139,50 +155,16 @@ describe('QuoteForm', () => {
     expect(await screen.findByText(/could not reach the server/i)).toBeInTheDocument();
   });
 
-  it('lets the user pick a design file and shows its name, then remove it', async () => {
-    const user = userEvent.setup();
-    render(<QuoteForm />);
-    const fileInput = screen.getByLabelText(/upload your design file/i) as HTMLInputElement;
-    const file = new File(['x'], 'my-design.png', { type: 'image/png' });
-    await user.upload(fileInput, file);
-    expect(screen.getByText('my-design.png')).toBeInTheDocument();
-
-    await user.click(screen.getByRole('button', { name: /remove/i }));
-    expect(screen.queryByText('my-design.png')).not.toBeInTheDocument();
-  });
-
-  // NOTE ON SCOPE: the client-side file size/extension checks in validate()
-  // can't be reliably exercised here. jsdom's `new FormData(form)` always
-  // returns a zero-byte File clone for file inputs (losing real content
-  // regardless of what user.upload() attached), and @testing-library's
-  // upload() itself respects the input's `accept` attribute, silently
-  // declining to attach files with a disallowed extension — both real
-  // jsdom/tooling limitations, not gaps in the component. The same checks
-  // are duplicated and unit-tested server-side in
-  // __tests__/api/quote.test.ts, which is the actual enforcement boundary.
-
-  describe('prefilling from a product page (?product=&color=&mount=&width=&height=)', () => {
-    it('prefills width, height, and the message when arriving from a product configurator', () => {
-      mockParams = new URLSearchParams('product=Zebra+Blinds&color=Black&mount=inside&width=24&height=36');
+  describe('prefilling from a product page (?product=&color=)', () => {
+    it('prefills the message when arriving from a product configurator', () => {
+      mockParams = new URLSearchParams('product=Zebra+Blinds&color=Black');
       render(<QuoteForm />);
-
-      expect(screen.getByLabelText(/approx\. width/i)).toHaveValue('24');
-      expect(screen.getByLabelText(/approx\. height/i)).toHaveValue('36');
-      expect(screen.getByLabelText(/tell us more about your project/i)).toHaveValue('Interested in: Zebra Blinds (Black)\n\n');
+      expect(screen.getByLabelText(/^message/i)).toHaveValue('Interested in: Zebra Blinds (Black)\n\n');
     });
 
-    it('pre-selects the matching mount type radio', () => {
-      mockParams = new URLSearchParams('mount=outside');
+    it('leaves the message blank with no query params', () => {
       render(<QuoteForm />);
-      expect(screen.getByRole('radio', { name: /outside mount/i })).toBeChecked();
-      expect(screen.getByRole('radio', { name: /not sure/i })).not.toBeChecked();
-    });
-
-    it('falls back to "Not Sure" and leaves fields blank with no query params', () => {
-      render(<QuoteForm />);
-      expect(screen.getByRole('radio', { name: /not sure/i })).toBeChecked();
-      expect(screen.getByLabelText(/approx\. width/i)).toHaveValue('');
-      expect(screen.getByLabelText(/tell us more about your project/i)).toHaveValue('');
+      expect(screen.getByLabelText(/^message/i)).toHaveValue('');
     });
   });
 });

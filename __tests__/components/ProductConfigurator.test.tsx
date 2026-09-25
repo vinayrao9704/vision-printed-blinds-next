@@ -19,7 +19,7 @@ describe('ProductConfigurator', () => {
     expect(text).not.toMatch(/live pricing/i);
     expect(text).not.toMatch(/add to cart/i);
     expect(text).not.toMatch(/whatsapp/i);
-    expect(screen.getByRole('link', { name: /get a free quote/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /get your free estimate/i })).toBeInTheDocument();
   });
 
   it('defaults to the first color and Inside Mount', () => {
@@ -39,7 +39,7 @@ describe('ProductConfigurator', () => {
     await user.click(screen.getByRole('button', { name: /outside mount/i }));
     expect(screen.getByRole('button', { name: /outside mount/i })).toHaveAttribute('aria-pressed', 'true');
 
-    const quoteLink = screen.getByRole('link', { name: /get a free quote/i });
+    const quoteLink = screen.getByRole('link', { name: /get your free estimate/i });
     const href = quoteLink.getAttribute('href')!;
     expect(href).toContain(`product=${encodeURIComponent(zebraPlain.name)}`);
     expect(href).toContain('color=Sand');
@@ -53,7 +53,7 @@ describe('ProductConfigurator', () => {
     await user.type(screen.getByLabelText(/width/i), '24');
     await user.type(screen.getByLabelText(/height/i), '36');
 
-    const href = screen.getByRole('link', { name: /get a free quote/i }).getAttribute('href')!;
+    const href = screen.getByRole('link', { name: /get your free estimate/i }).getAttribute('href')!;
     expect(href).toContain('width=24');
     expect(href).toContain('height=36');
   });

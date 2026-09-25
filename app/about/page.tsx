@@ -31,8 +31,8 @@ export default function AboutPage() {
           <h1 className="page-hero__title">EDMONTON&apos;S CUSTOM<br/><span className="text-gold">BLIND SPECIALISTS</span></h1>
           <p className="page-hero__desc">We&apos;re passionate about transforming windows into visual statements — combining premium blind craftsmanship with high-resolution custom printing so your windows tell your story.</p>
           <div style={{display:'flex',gap:'12px',flexWrap:'wrap'}}>
-            <Link href="/quote" className="btn btn--gold btn--lg btn--animated">Get a Free Quote</Link>
-            <Link href="/shop?tab=custom" className="btn btn--outline-white btn--lg">Shop Custom Printed</Link>
+            <Link href="/quote" className="btn btn--gold btn--lg btn--animated">Get Your Free Estimate</Link>
+            <Link href="/custom-printed" className="btn btn--outline-white btn--lg">Shop Custom Printed</Link>
           </div>
         </div>
       </section>
@@ -124,7 +124,7 @@ export default function AboutPage() {
           <div className="faq-still" style={{textAlign:'center',marginTop:'48px'}}>
             <p style={{color:'var(--text-mid)',marginBottom:'20px',fontSize:'1.05rem'}}>Still have questions? We&apos;re happy to help.</p>
             <div style={{display:'flex',gap:'12px',justifyContent:'center',flexWrap:'wrap'}}>
-              <Link href="/quote" className="btn btn--gold btn--lg btn--animated">Get a Free Quote</Link>
+              <Link href="/quote" className="btn btn--gold btn--lg btn--animated">Get Your Free Estimate</Link>
               <a href="mailto:info@visionprintedblinds.ca" className="btn btn--outline-navy btn--lg">Email Us</a>
             </div>
           </div>
@@ -171,10 +171,10 @@ export default function AboutPage() {
         <div className="container cta-final__inner">
           <span className="section-tag section-tag--light">GET STARTED</span>
           <h2 className="section-title section-title--white">READY TO TRANSFORM<br/><span style={{color:'var(--gold)'}}>YOUR WINDOWS?</span></h2>
-          <p className="section-desc section-desc--light">Request a free quote and one of our team members will be in touch within one business day.</p>
+          <p className="section-desc section-desc--light">Request your free estimate and one of our team members will be in touch within one business day.</p>
           <div className="cta-final__btns">
-            <Link href="/quote" className="btn btn--gold btn--xl btn--animated">Get a Free Quote</Link>
-            <Link href="/shop?tab=custom" className="btn btn--outline-white btn--xl">★ Shop Custom Printed</Link>
+            <Link href="/quote" className="btn btn--gold btn--xl btn--animated">Get Your Free Estimate</Link>
+            <Link href="/custom-printed" className="btn btn--outline-white btn--xl">★ Shop Custom Printed</Link>
           </div>
         </div>
       </section>

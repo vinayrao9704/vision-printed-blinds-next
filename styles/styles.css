@@ -317,6 +317,51 @@ input, select, textarea { font-family: inherit; }
   transition: transform 0.25s;
 }
 .nav__item--mega:hover .nav__chevron { transform: rotate(180deg); }
+
+/* ---- Per-category header dropdowns (Blinds / Shades / Curtains & Drapes / Custom Printed Blinds) ---- */
+.nav__item--drop { position: relative; }
+.nav__link--has-drop {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.nav__link--open .nav__chevron { transform: rotate(180deg); }
+.nav__dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background: var(--navy-dark);
+  border-top: 2px solid rgba(245,165,35,0.3);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+  z-index: 999;
+  padding: 8px 0;
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+}
+.nav__item--drop:hover .nav__dropdown,
+.nav__dropdown.open {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+.nav__dropdown ul li a {
+  display: block;
+  font-size: 13px;
+  color: rgba(255,255,255,0.72);
+  padding: 9px 20px;
+  transition: color var(--transition), background var(--transition);
+  white-space: nowrap;
+}
+.nav__dropdown ul li a:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+.mobile-acc-links { display: flex; flex-direction: column; padding: 4px 0 16px; }
+.mobile-acc-links a { font-size: 13px; color: rgba(255,255,255,0.7); padding: 8px 4px; }
+
 .nav__actions {
   display: flex;
   align-items: center;
@@ -338,7 +383,11 @@ input, select, textarea { font-family: inherit; }
 .nav__hamburger {
   display: none;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
+  min-width: 44px;
+  min-height: 44px;
   padding: 10px;
   margin-left: 8px;
   cursor: pointer;
@@ -2046,7 +2095,7 @@ input, select, textarea { font-family: inherit; }
   flex-shrink: 0;
 }
 
-.pdp-colors { display: flex; gap: 12px; }
+.pdp-colors { display: flex; flex-wrap: wrap; gap: 12px; }
 .pdp-color-swatch {
   width: 36px; height: 36px;
   border-radius: 50%;
@@ -2731,7 +2780,7 @@ input, select, textarea { font-family: inherit; }
   .products-grid { grid-template-columns: repeat(3, 1fr); }
   .design-grid { grid-template-columns: repeat(4, 1fr); }
   .room-cat-grid { grid-template-columns: repeat(3, 1fr); }
-  .why-grid { grid-template-columns: repeat(4, 1fr); }
+  .why-grid { grid-template-columns: repeat(3, 1fr); }
   .steps-grid { flex-wrap: wrap; gap: 16px; }
   .step__connector { display: none; }
   .gallery-masonry { columns: 3; }
@@ -2792,4 +2841,8 @@ input, select, textarea { font-family: inherit; }
   .gallery-masonry { columns: 2; }
   .final-cta__btns { flex-direction: column; }
   .testimonials-grid { grid-template-columns: 1fr; }
+
+  /* 44px minimum touch target on phone widths */
+  .btn { min-height: 44px; }
+  .pcard__ctas .btn { min-height: 44px; }
 }

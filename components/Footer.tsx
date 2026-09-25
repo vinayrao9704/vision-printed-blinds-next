@@ -22,7 +22,7 @@ export default function Footer() {
             <h4>Pages</h4>
             <ul>
               <li><Link href="/">Home</Link></li>
-              <li><Link href="/shop">Shop All Blinds</Link></li>
+              <li><Link href="/products/roller-blinds">Blinds &amp; Shades</Link></li>
               <li><Link href="/gallery">Gallery</Link></li>
               <li><Link href="/measure-guide">Measuring Guide</Link></li>
               <li><Link href="/about">About &amp; FAQ</Link></li>
@@ -48,9 +48,9 @@ export default function Footer() {
             <h4>Get Started</h4>
             <p>No prices listed — every blind is custom made to order.</p>
             <Link href="/quote" className="btn btn--gold" style={{width:'100%',justifyContent:'center',marginBottom:'10px'}}>
-              Get a Free Quote
+              Get Your Free Estimate
             </Link>
-            <Link href="/shop?tab=custom" className="btn btn--outline-white" style={{width:'100%',justifyContent:'center'}}>
+            <Link href="/custom-printed" className="btn btn--outline-white" style={{width:'100%',justifyContent:'center'}}>
               Shop Custom Printed
             </Link>
           </div>

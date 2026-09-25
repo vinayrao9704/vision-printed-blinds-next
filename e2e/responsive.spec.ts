@@ -101,13 +101,49 @@ test.describe('touch targets are at least 44px tall on mobile', () => {
       expect(box?.height ?? 0).toBeGreaterThanOrEqual(44);
     }
   });
+
+  test('the hamburger button meets the 44px minimum touch target size', async ({ page }) => {
+    const width = page.viewportSize()!.width;
+    test.skip(width >= 1025 || width > 480, 'only relevant at phone widths');
+
+    await page.goto('/');
+    const box = await page.locator('.nav__hamburger').boundingBox();
+    expect(box?.height ?? 0).toBeGreaterThanOrEqual(44);
+    expect(box?.width ?? 0).toBeGreaterThanOrEqual(44);
+  });
+
+  test('custom-printed product card buttons (View Details / Get Quote) meet the 44px minimum', async ({ page }) => {
+    const width = page.viewportSize()!.width;
+    test.skip(width > 480, 'touch-target sizing only enforced on phone-width viewports');
+
+    await page.goto('/custom-printed');
+    const ctas = page.locator('.pcard__ctas .btn');
+    await ctas.first().waitFor();
+    const count = await ctas.count();
+    expect(count).toBeGreaterThan(0);
+    for (let i = 0; i < count; i++) {
+      const box = await ctas.nth(i).boundingBox();
+      expect(box?.height ?? 0).toBeGreaterThanOrEqual(44);
+    }
+  });
+});
+
+test.describe('colour swatches wrap on narrow screens', () => {
+  test('the zebra blinds colour swatches wrap instead of overflowing at phone width', async ({ page }) => {
+    const width = page.viewportSize()!.width;
+    test.skip(width > 480, 'only relevant at phone widths');
+
+    await page.goto('/products/zebra-blinds');
+    const wrap = await page.locator('.colour-swatches').evaluate((el) => getComputedStyle(el).flexWrap);
+    expect(wrap).toBe('wrap');
+  });
 });
 
 test.describe('grid layouts change column count at the defined breakpoints', () => {
-  test('shop products grid', async ({ page }) => {
-    await page.goto('/shop');
+  test('custom-printed products grid', async ({ page }) => {
+    await page.goto('/custom-printed');
     const width = page.viewportSize()!.width;
-    const columns = await page.locator('#productsGrid').evaluate(
+    const columns = await page.locator('#customProductsGrid').evaluate(
       (el) => getComputedStyle(el).gridTemplateColumns.split(' ').length
     );
     expect(columns).toBe(expectedColumnCount(width));

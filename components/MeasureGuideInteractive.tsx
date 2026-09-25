@@ -218,7 +218,7 @@ export default function MeasureGuideInteractive() {
               </select>
               {blindType && (
                 <p className="mg-depth-result">
-                  Minimum casing depth for <strong>{blindType}</strong> depends on the fabric and hardware you choose — <Link href="/quote">request a free quote</Link> and we&apos;ll confirm your exact clearance before you order, or ask for a free in-person measurement.
+                  Minimum casing depth for <strong>{blindType}</strong> depends on the fabric and hardware you choose — <Link href="/quote">request your free estimate</Link> and we&apos;ll confirm your exact clearance before you order, or ask for a free in-person measurement.
                 </p>
               )}
             </div>

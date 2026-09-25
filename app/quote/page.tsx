@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import QuoteForm from '@/components/QuoteForm';
 
 export const metadata: Metadata = {
-  title: 'Get a Free Quote',
+  title: 'Get Your Free Estimate',
   description: 'Request a free custom blind quote from Vision Printed Blinds in Edmonton. Tell us your window dimensions, fabric preferences, and custom printing needs.',
 };
 
@@ -17,7 +17,7 @@ export default function QuotePage() {
         <div className="container page-hero__inner">
           <div className="page-breadcrumb"><Link href="/">Home</Link> &rsaquo; Get a Quote</div>
           <span className="section-tag section-tag--light">FREE &amp; NO OBLIGATION</span>
-          <h1 className="page-hero__title">GET YOUR<br/><span className="text-gold">FREE QUOTE</span></h1>
+          <h1 className="page-hero__title">GET YOUR<br/><span className="text-gold">FREE ESTIMATE</span></h1>
           <p className="page-hero__desc">Tell us about your windows and what you&apos;re looking for. We&apos;ll respond within one business day with a tailored quote — no pressure, no commitment.</p>
         </div>
       </section>
@@ -50,7 +50,7 @@ export default function QuotePage() {
                 <div className="qsb-card__visual scene--cp-roller" style={{height:'130px',borderRadius:'var(--radius-md)',marginBottom:'18px',position:'relative'}}><div className="blind-slats"></div></div>
                 <h3 className="qsb-card__title" style={{color:'var(--white)'}}>CUSTOM PRINTED BLINDS</h3>
                 <p className="qsb-card__desc" style={{color:'rgba(255,255,255,0.7)'}}>Any photo, design, logo, or artwork — printed at full UV quality on commercial-grade blind fabric.</p>
-                <Link href="/shop?tab=custom" className="btn btn--gold" style={{width:'100%',justifyContent:'center'}}>★ Shop Custom Printed</Link>
+                <Link href="/custom-printed" className="btn btn--gold" style={{width:'100%',justifyContent:'center'}}>★ Shop Custom Printed</Link>
               </div>
 
               <div className="qsb-card">

@@ -128,10 +128,10 @@ export default function CustomPage() {
         <div className="final-cta__overlay"></div>
         <div className="container final-cta__inner">
           <h2 className="final-cta__title">YOUR IMAGE.<br/>YOUR WINDOW.<br/><span className="final-cta__accent">OUR PRINT.</span></h2>
-          <p className="final-cta__sub">Try the preview tool above, then request a free quote.</p>
+          <p className="final-cta__sub">Try the preview tool above, then request your free estimate.</p>
           <div className="final-cta__btns">
             <a href="#preview-tool" className="btn btn--gold btn--xl btn--animated">Try Preview Tool</a>
-            <Link href="/quote" className="btn btn--outline-white btn--xl">Get a Free Quote</Link>
+            <Link href="/quote" className="btn btn--outline-white btn--xl">Get Your Free Estimate</Link>
           </div>
         </div>
       </section>

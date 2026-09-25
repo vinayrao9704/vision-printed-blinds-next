@@ -3,8 +3,6 @@ import { Resend } from 'resend';
 
 export const runtime = 'nodejs';
 
-const MAX_FILE_BYTES = 20 * 1024 * 1024; // 20MB, matches the form's stated limit
-const ALLOWED_FILE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.pdf', '.svg', '.tiff', '.ai', '.eps'];
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function fieldErrors(form: FormData): Record<string, string> {
@@ -18,25 +16,14 @@ function fieldErrors(form: FormData): Record<string, string> {
   else if (!EMAIL_RE.test(email)) errors.email = 'Enter a valid email address.';
 
   const phone = String(form.get('phone') ?? '').trim();
-  if (phone && phone.replace(/[^0-9]/g, '').length < 7) errors.phone = 'Enter a valid phone number.';
+  if (!phone) errors.phone = 'Phone number is required.';
+  else if (phone.replace(/[^0-9]/g, '').length < 7) errors.phone = 'Enter a valid phone number.';
 
   const message = String(form.get('message') ?? '').trim();
   if (!message) errors.message = 'Tell us a bit about your project.';
   else if (message.length < 10) errors.message = 'Please provide a bit more detail (at least 10 characters).';
 
   if (form.get('consent') !== 'on') errors.consent = 'Consent is required to submit this form.';
-
-  const file = form.get('designFile');
-  if (file instanceof File && file.size > 0) {
-    if (file.size > MAX_FILE_BYTES) {
-      errors.designFile = 'File is too large — max 20MB.';
-    } else {
-      const ext = '.' + (file.name.split('.').pop() ?? '').toLowerCase();
-      if (!ALLOWED_FILE_EXTENSIONS.includes(ext)) {
-        errors.designFile = 'Unsupported file type.';
-      }
-    }
-  }
 
   return errors;
 }
@@ -47,21 +34,11 @@ function buildSummary(form: FormData): string {
     `Name: ${get('name')}`,
     `Email: ${get('email')}`,
     `Phone: ${get('phone') || '—'}`,
-    `City/Location: ${get('city') || '—'}`,
-    '',
-    `Project type: ${get('projectType') || '—'}`,
-    `Blind type(s): ${form.getAll('blindType').map(String).join(', ') || '—'}`,
-    `Custom printing: ${get('customPrint') || '—'}`,
-    '',
-    `Window count: ${get('windowCount') || '—'}`,
-    `Width (each): ${get('width') || '—'}`,
-    `Height (each): ${get('height') || '—'}`,
-    `Mount type: ${get('mountType') || '—'}`,
+    `Area: ${get('area') || '—'}`,
+    `Type of property: ${get('propertyType') || '—'}`,
     '',
     `Message:`,
     get('message'),
-    '',
-    `Found us via: ${get('source') || '—'}`,
   ];
   return lines.join('\n');
 }
@@ -92,13 +69,6 @@ export async function POST(request: Request) {
   const fromName = String(form.get('name') ?? '').trim();
   const fromEmail = String(form.get('email') ?? '').trim();
 
-  const attachments: { filename: string; content: Buffer }[] = [];
-  const file = form.get('designFile');
-  if (file instanceof File && file.size > 0) {
-    const buffer = Buffer.from(await file.arrayBuffer());
-    attachments.push({ filename: file.name, content: buffer });
-  }
-
   try {
     const resend = new Resend(RESEND_API_KEY);
     const { error } = await resend.emails.send({
@@ -107,7 +77,6 @@ export async function POST(request: Request) {
       replyTo: `${fromName} <${fromEmail}>`,
       subject: `New Quote Request — ${fromName}`,
       text: buildSummary(form),
-      attachments,
     });
 
     if (error) throw error;

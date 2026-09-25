@@ -5,11 +5,67 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
 
+interface DropdownItem { label: string; href: string; className?: string }
+interface DropdownGroup { key: string; label: string; items: DropdownItem[] }
+
+const DROPDOWNS: DropdownGroup[] = [
+  {
+    key: 'blinds',
+    label: 'Blinds',
+    items: [
+      { label: 'Roller Blinds', href: '/products/roller-blinds' },
+      { label: 'Zebra Blinds', href: '/products/zebra-blinds' },
+      { label: 'Vertical Blinds', href: '/products/vertical-blinds' },
+      { label: 'Panel Track Blinds', href: '/products/panel-track-blinds' },
+    ],
+  },
+  {
+    key: 'shades',
+    label: 'Shades',
+    items: [
+      { label: 'Blackout Shades', href: '/products/blackout-shades' },
+      { label: 'Solar Shades', href: '/products/solar-shades' },
+      { label: 'Cellular Shades', href: '/products/cellular-shades' },
+      { label: 'Roman Shades', href: '/products/roman-shades' },
+      { label: 'Natural Shades', href: '/products/natural-shades' },
+    ],
+  },
+  {
+    key: 'curtains',
+    label: 'Curtains & Drapes',
+    items: [
+      { label: 'Sheer Curtains', href: '/products/sheer-curtains' },
+      { label: 'Blackout Curtains', href: '/products/blackout-curtains' },
+      { label: 'Pinch Pleat Drapes', href: '/products/pinch-pleat-drapes' },
+      { label: 'Custom Printed Curtains', href: '/products/custom-printed-curtains' },
+    ],
+  },
+  {
+    key: 'custom',
+    label: 'Custom Printed Blinds',
+    items: [
+      { label: 'Photo Blinds', href: '/custom-printed', className: 'mega-link--gold' },
+      { label: 'Landscape Prints', href: '/custom-printed', className: 'mega-link--gold' },
+      { label: 'Artwork & Patterns', href: '/custom-printed', className: 'mega-link--gold' },
+      { label: 'Kids Designs', href: '/custom-printed', className: 'mega-link--gold' },
+      { label: 'Business Branding', href: '/custom-printed', className: 'mega-link--gold' },
+    ],
+  },
+];
+
+function ChevronIcon() {
+  return (
+    <svg className="nav__chevron" viewBox="0 0 12 8" fill="none">
+      <path d="M1 1l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    </svg>
+  );
+}
+
 export default function Nav() {
   const pathname = usePathname();
   const [scrolled, setScrolled]   = useState(false);
   const [mobileOpen, setMobile]   = useState(false);
-  const [megaForceClosed, setMegaForceClosed] = useState(false);
+  const [openMenu, setOpenMenu]   = useState<string | null>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
 
@@ -19,16 +75,20 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Close mobile menu on route change
-  useEffect(() => { setMobile(false); }, [pathname]);
+  // Close mobile menu and any open dropdown on route change
+  useEffect(() => { setMobile(false); setOpenMenu(null); }, [pathname]);
 
   // Standard a11y expectation: Escape closes an open overlay/menu.
   useEffect(() => {
-    if (!mobileOpen) return;
-    const onKeyDown = (e: KeyboardEvent) => { if (e.key === 'Escape') setMobile(false); };
+    if (!mobileOpen && !openMenu) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return;
+      setMobile(false);
+      setOpenMenu(null);
+    };
     document.addEventListener('keydown', onKeyDown);
     return () => document.removeEventListener('keydown', onKeyDown);
-  }, [mobileOpen]);
+  }, [mobileOpen, openMenu]);
 
   // Tapping/clicking anywhere outside the open mobile menu (and outside the
   // hamburger itself, which already toggles it) should close it too.
@@ -44,14 +104,18 @@ export default function Nav() {
     return () => document.removeEventListener('pointerdown', onPointerDown);
   }, [mobileOpen]);
 
-  // Clicking a mega-menu link navigates, but the cursor hasn't moved and the
-  // clicked link keeps focus — so both :hover and :focus-within stay true and
-  // the dropdown just sits open over the new page. CSS alone can't detect a
-  // click, so force it shut here and let it reopen naturally on next hover.
-  function closeMegaOnClick() {
-    setMegaForceClosed(true);
-    (document.activeElement as HTMLElement | null)?.blur();
-  }
+  // Clicking anywhere outside an open desktop dropdown closes it. Only one
+  // dropdown is ever open at once since openMenu holds a single key.
+  useEffect(() => {
+    if (!openMenu) return;
+    function onPointerDown(e: PointerEvent) {
+      const target = e.target as Element;
+      if (target.closest?.('.nav__item--drop, .mobile-accordion')) return;
+      setOpenMenu(null);
+    }
+    document.addEventListener('pointerdown', onPointerDown);
+    return () => document.removeEventListener('pointerdown', onPointerDown);
+  }, [openMenu]);
 
   const isActive = (href: string) =>
     pathname === href || (href !== '/' && pathname.startsWith(href));
@@ -67,93 +131,41 @@ export default function Nav() {
 
         {/* Desktop links */}
         <ul className="nav__links" id="navLinks">
-
-          {/* Shop mega menu — shown via CSS :hover/:focus-within on .nav__item--mega */}
-          <li
-            className={`nav__item nav__item--mega${megaForceClosed ? ' force-closed' : ''}`}
-            id="megaItem"
-            onClick={closeMegaOnClick}
-            onMouseLeave={() => setMegaForceClosed(false)}
-          >
-            <Link href="/shop" className="nav__link nav__link--has-mega">
-              Shop Blinds
-              <svg className="nav__chevron" viewBox="0 0 12 8" fill="none">
-                <path d="M1 1l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-              </svg>
-            </Link>
-            <div className="mega-menu" id="megaMenu">
-              <div className="mega-menu__body">
-                <div className="mega-col">
-                  <h4 className="mega-col__head">BLINDS</h4>
-                  <ul>
-                    <li><Link href="/shop?tab=roller&highlight=roller-light">Roller Blinds</Link></li>
-                    <li><Link href="/shop?tab=zebra&highlight=zebra-plain">Zebra Blinds</Link></li>
-                    <li><Link href="/shop?tab=specialty&highlight=vertical">Vertical Blinds</Link></li>
-                    <li><Link href="/shop?tab=specialty&highlight=panel-track">Panel Track</Link></li>
-                  </ul>
-                </div>
-                <div className="mega-col">
-                  <h4 className="mega-col__head">SHADES</h4>
-                  <ul>
-                    <li><Link href="/shop?tab=blackout&highlight=blkout-bdrm">Blackout Shades</Link></li>
-                    <li><Link href="/shop?tab=solar&highlight=solar-res">Solar Shades</Link></li>
-                    <li><Link href="/shop?tab=specialty&highlight=cellular">Cellular Shades</Link></li>
-                    <li><Link href="/shop?tab=specialty&highlight=roman">Roman Shades</Link></li>
-                    <li><Link href="/shop?tab=specialty&highlight=natural">Natural Shades</Link></li>
-                  </ul>
-                </div>
-                <div className="mega-col">
-                  <h4 className="mega-col__head">SMART &amp; SPECIALTY</h4>
-                  <ul>
-                    <li><Link href="/shop?tab=motorized&highlight=motor-roller">Motorized Blinds</Link></li>
-                    <li><Link href="/shop?filter=smart-home">Smart Home</Link></li>
-                    <li><Link href="/shop?filter=large-window">Large Windows</Link></li>
-                    <li><Link href="/shop?tab=specialty&highlight=vertical">Patio Doors</Link></li>
-                  </ul>
-                </div>
-                <div className="mega-col">
-                  <h4 className="mega-col__head">CURTAINS &amp; DRAPES</h4>
-                  <ul>
-                    <li><Link href="/shop?tab=curtains&highlight=curtain-sheer">Sheer Curtains</Link></li>
-                    <li><Link href="/shop?tab=curtains&highlight=curtain-blackout">Blackout Curtains</Link></li>
-                    <li><Link href="/shop?tab=curtains&highlight=curtain-pleat">Pinch Pleat Drapes</Link></li>
-                    <li><Link href="/shop?tab=curtains&highlight=curtain-custom">Custom Printed Curtains</Link></li>
-                  </ul>
-                </div>
-                <div className="mega-col mega-col--featured">
-                  <h4 className="mega-col__head mega-col__head--gold">★ CUSTOM PRINTED</h4>
-                  <ul>
-                    <li><Link href="/shop?tab=custom" className="mega-link--gold">Photo Blinds</Link></li>
-                    <li><Link href="/shop?tab=custom" className="mega-link--gold">Landscape Prints</Link></li>
-                    <li><Link href="/shop?tab=custom" className="mega-link--gold">Artwork &amp; Patterns</Link></li>
-                    <li><Link href="/shop?tab=custom" className="mega-link--gold">Kids Designs</Link></li>
-                    <li><Link href="/shop?tab=custom" className="mega-link--gold">Business Branding</Link></li>
-                  </ul>
-                </div>
+          {DROPDOWNS.map((group) => (
+            <li
+              key={group.key}
+              className="nav__item nav__item--drop"
+            >
+              <button
+                type="button"
+                className={`nav__link nav__link--has-drop${openMenu === group.key ? ' nav__link--open' : ''}`}
+                aria-haspopup="true"
+                aria-expanded={openMenu === group.key}
+                onClick={() => setOpenMenu((m) => (m === group.key ? null : group.key))}
+              >
+                {group.label}
+                <ChevronIcon />
+              </button>
+              <div className={`nav__dropdown${openMenu === group.key ? ' open' : ''}`} id={`dropdown-${group.key}`}>
+                <ul>
+                  {group.items.map((item) => (
+                    <li key={item.label}>
+                      <Link href={item.href} className={item.className} onClick={() => setOpenMenu(null)}>{item.label}</Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <div className="mega-menu__cta">
-                <div className="mega-feature-card">
-                  <div className="mega-feature-card__img scene--cp-roller"><div className="blind-slats"></div></div>
-                  <div className="mega-feature-card__body">
-                    <span className="section-tag" style={{margin:'0 0 6px'}}>OUR SPECIALTY</span>
-                    <h3>Custom Printed Blinds</h3>
-                    <p>Print any photo or artwork on your blind.</p>
-                    <Link href="/shop?tab=custom" className="btn btn--gold btn--sm">Shop Custom Printed →</Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
+            </li>
+          ))}
 
           <li><Link href="/gallery"className={`nav__link${isActive('/gallery') ? ' active' : ''}`}>Gallery</Link></li>
           <li><Link href="/measure-guide" className={`nav__link${isActive('/measure-guide') ? ' active' : ''}`}>Measuring Guide</Link></li>
           <li><Link href="/about"  className={`nav__link${isActive('/about')   ? ' active' : ''}`}>About</Link></li>
-          <li><Link href="/quote"  className={`nav__link${isActive('/quote')   ? ' active' : ''}`}>Contact</Link></li>
         </ul>
 
         {/* Desktop actions */}
         <div className="nav__actions">
-          <Link href="/quote" className="btn btn--gold">Get a Free Quote</Link>
+          <Link href="/quote" className="btn btn--gold">Get Your Free Estimate</Link>
         </div>
 
         {/* Hamburger */}
@@ -173,13 +185,36 @@ export default function Nav() {
       <div ref={mobileMenuRef} className={`nav__mobile${mobileOpen ? ' open' : ''}`} aria-hidden={!mobileOpen}>
         <ul className="nav__mobile-links">
           <li><Link href="/">Home</Link></li>
-          <li><Link href="/shop">Shop All Blinds</Link></li>
+        </ul>
+
+        {DROPDOWNS.map((group) => (
+          <div className="mobile-accordion" key={group.key}>
+            <button
+              type="button"
+              className="mobile-acc-head"
+              aria-expanded={openMenu === group.key}
+              onClick={() => setOpenMenu((m) => (m === group.key ? null : group.key))}
+            >
+              {group.label}
+              <ChevronIcon />
+            </button>
+            <div className={`mobile-acc-body${openMenu === group.key ? ' open' : ''}`}>
+              <div className="mobile-acc-links">
+                {group.items.map((item) => (
+                  <Link key={item.label} href={item.href} className={item.className}>{item.label}</Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+
+        <ul className="nav__mobile-links">
           <li><Link href="/gallery">Gallery</Link></li>
           <li><Link href="/measure-guide">Measuring Guide</Link></li>
           <li><Link href="/about">About &amp; FAQ</Link></li>
         </ul>
         <div className="nav__mobile-ctas">
-          <Link href="/quote" className="btn btn--gold btn--full">Get a Free Quote</Link>
+          <Link href="/quote" className="btn btn--gold btn--full">Get Your Free Estimate</Link>
         </div>
       </div>
     </nav>
