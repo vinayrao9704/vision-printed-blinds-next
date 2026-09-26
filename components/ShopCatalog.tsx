@@ -9,8 +9,8 @@ import { products, tagLabels, type Product } from '@/lib/products';
 const tabs = [
   { id:'all', label:'All Products' },
   { id:'custom', label:'★ Custom Printed' },
-  { id:'roller', label:'Roller Blinds' },
-  { id:'zebra', label:'Zebra Blinds' },
+  { id:'roller', label:'Roller Shades' },
+  { id:'zebra', label:'Zebra Shades' },
   { id:'blackout', label:'Blackout' },
   { id:'solar', label:'Solar Shades' },
   { id:'curtains', label:'Curtains & Drapes' },

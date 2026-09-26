@@ -114,21 +114,21 @@ describe('Nav', () => {
     expect(hamburger).toHaveAttribute('aria-expanded', 'false');
   });
 
-  it('the Blinds dropdown contains its sub-category links', () => {
+  it('the Shades dropdown contains its sub-category links', () => {
     render(<Nav />);
-    const zebraLink = screen.getByRole('link', { name: 'Zebra Blinds' });
-    expect(zebraLink).toHaveAttribute('href', '/products/zebra-blinds');
+    const zebraLink = screen.getByRole('link', { name: 'Zebra Shades' });
+    expect(zebraLink).toHaveAttribute('href', '/products/zebra-shades');
   });
 
   it('clicking a dropdown trigger opens it, and clicking one of its links closes it again', async () => {
     const user = userEvent.setup();
     render(<Nav />);
-    const blindsTrigger = screen.getByRole('button', { name: /^Blinds/ });
-    await user.click(blindsTrigger);
-    expect(blindsTrigger).toHaveAttribute('aria-expanded', 'true');
+    const shadesTrigger = screen.getByRole('button', { name: /^Shades/ });
+    await user.click(shadesTrigger);
+    expect(shadesTrigger).toHaveAttribute('aria-expanded', 'true');
 
-    await user.click(screen.getByRole('link', { name: 'Zebra Blinds' }));
-    expect(blindsTrigger).toHaveAttribute('aria-expanded', 'false');
+    await user.click(screen.getByRole('link', { name: 'Zebra Shades' }));
+    expect(shadesTrigger).toHaveAttribute('aria-expanded', 'false');
   });
 
   it('only one dropdown is open at a time', async () => {

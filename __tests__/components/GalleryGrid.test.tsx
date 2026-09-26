@@ -85,6 +85,6 @@ describe('GalleryGrid', () => {
     render(<GalleryGrid />);
     await user.click(screen.getByText('Rocky Mountain Sunrise')); // first item overall
     await user.click(screen.getByRole('button', { name: /previous image/i })); // wraps to last item
-    expect(screen.getByText('A Whole Lot of Love', { selector: '.lightbox__caption' })).toBeInTheDocument();
+    expect(screen.getByText('Lord Ganesha Devotional Print', { selector: '.lightbox__caption' })).toBeInTheDocument();
   });
 });

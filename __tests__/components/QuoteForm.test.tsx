@@ -157,9 +157,9 @@ describe('QuoteForm', () => {
 
   describe('prefilling from a product page (?product=&color=)', () => {
     it('prefills the message when arriving from a product configurator', () => {
-      mockParams = new URLSearchParams('product=Zebra+Blinds&color=Black');
+      mockParams = new URLSearchParams('product=Zebra+Shades&color=Black');
       render(<QuoteForm />);
-      expect(screen.getByLabelText(/^message/i)).toHaveValue('Interested in: Zebra Blinds (Black)\n\n');
+      expect(screen.getByLabelText(/^message/i)).toHaveValue('Interested in: Zebra Shades (Black)\n\n');
     });
 
     it('leaves the message blank with no query params', () => {

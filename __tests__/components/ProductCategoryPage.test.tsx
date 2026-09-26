@@ -2,8 +2,8 @@ import { render, screen, within } from '@testing-library/react';
 import ProductCategoryPage from '@/components/ProductCategoryPage';
 import { getProductCategory } from '@/lib/productCategories';
 
-describe('ProductCategoryPage (zebra-blinds)', () => {
-  const category = getProductCategory('zebra-blinds')!;
+describe('ProductCategoryPage (zebra-shades)', () => {
+  const category = getProductCategory('zebra-shades')!;
 
   it('renders the hero title, tagline, and intro copy', () => {
     render(<ProductCategoryPage category={category} />);

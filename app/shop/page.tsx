@@ -7,7 +7,7 @@ import { products } from '@/lib/products';
 
 export const metadata: Metadata = {
   title: 'Shop All Custom Blinds & Shades',
-  description: 'Browse all custom blinds and shades. Roller blinds, blackout, solar shades, zebra, motorized, specialty and commercial options — all with custom printing available.',
+  description: 'Browse all custom blinds and shades. Roller shades, blackout, solar shades, zebra shades, motorized, specialty and commercial options — all with custom printing available.',
 };
 
 export default function ShopPage() {

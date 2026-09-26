@@ -35,10 +35,10 @@ describe('MeasureGuideInteractive', () => {
     render(<MeasureGuideInteractive />);
 
     expect(screen.queryByText(/request your free estimate/i)).not.toBeInTheDocument();
-    await user.selectOptions(screen.getByLabelText(/select your blind type/i), 'Roller Blinds');
+    await user.selectOptions(screen.getByLabelText(/select your blind type/i), 'Roller Shades');
 
     const result = screen.getByText(/minimum casing depth for/i);
-    expect(result).toHaveTextContent('Roller Blinds');
+    expect(result).toHaveTextContent('Roller Shades');
     expect(screen.getByRole('link', { name: /request your free estimate/i })).toHaveAttribute('href', '/quote');
   });
 

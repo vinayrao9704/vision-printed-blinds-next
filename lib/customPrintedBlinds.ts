@@ -23,7 +23,7 @@ export const customPrintCategories: CustomPrintCategory[] = [
       'Fade-resistant inks that hold their colour for years',
       'Perfect for bedrooms and living rooms',
     ],
-    images: ['photo-1.jpg', 'photo-2.jpg', 'photo-3.jpg', 'photo-4.jpg', 'photo-5.jpg', 'photo-6.jpg'],
+    images: ['photo-1.webp', 'photo-2.webp', 'photo-3.webp', 'photo-5.webp', 'photo-6.webp'],
     imageLayout: 'left',
   },
   {
@@ -39,7 +39,7 @@ export const customPrintCategories: CustomPrintCategory[] = [
       'Great for offices and windows with a poor view',
       'A calming, high-impact focal point',
     ],
-    images: ['landscape-1.jpg', 'landscape-2.jpg', 'landscape-3.jpg', 'landscape-4.jpg', 'landscape-5.jpg', 'landscape-6.jpg', 'landscape-7.jpg'],
+    images: ['landscape-1.webp', 'landscape-2.webp', 'landscape-3.webp', 'landscape-4.webp', 'landscape-5.webp', 'landscape-6.webp', 'landscape-7.webp'],
     imageLayout: 'right',
   },
   {
@@ -55,7 +55,7 @@ export const customPrintCategories: CustomPrintCategory[] = [
       'Custom colour adjustments on request',
       'A designer finish without designer pricing',
     ],
-    images: ['artwork-1.jpg', 'artwork-2.jpg', 'artwork-3.jpg', 'artwork-4.jpg', 'artwork-5.jpg', 'artwork-6.jpg', 'artwork-7.jpg'],
+    images: ['artwork-1.webp', 'artwork-2.webp', 'artwork-3.webp', 'artwork-4.webp', 'artwork-5.webp', 'artwork-6.webp', 'artwork-7.webp'],
     imageLayout: 'left',
   },
   {
@@ -71,7 +71,7 @@ export const customPrintCategories: CustomPrintCategory[] = [
       'Blackout options for better sleep',
       'Safe, cordless operation available',
     ],
-    images: ['kids-1.jpg', 'kids-2.jpg', 'kids-3.jpg', 'kids-4.jpg', 'kids-5.jpg', 'kids-6.jpg'],
+    images: ['kids-1.webp', 'kids-2.webp', 'kids-3.webp', 'kids-4.webp', 'kids-5.webp', 'kids-6.webp', 'kids-7.webp'],
     imageLayout: 'right',
   },
   {

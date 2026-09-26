@@ -52,7 +52,7 @@ describe('ShopCatalog component', () => {
     mockParams = new URLSearchParams();
   });
 
-  // Several product names (e.g. "Zebra Blinds", "Roller Blinds") are also the
+  // Several product names (e.g. "Zebra Shades", "Roller Shades") are also the
   // exact label text of the shop-tab filter buttons, so plain getByText is
   // ambiguous — product names render as <h3 className="pcard__name">, so
   // scoping to the heading role disambiguates them from the tab/filter chips.
@@ -73,35 +73,35 @@ describe('ShopCatalog component', () => {
   it('filters to only Zebra products when the URL has ?tab=zebra', () => {
     mockParams = new URLSearchParams('tab=zebra');
     render(<ShopCatalog />);
-    expect(productHeading('Zebra Blinds')).toBeInTheDocument();
-    expect(productHeading('Custom Design Zebra Blinds')).toBeInTheDocument();
-    expect(queryProductHeading('Roller Blinds')).not.toBeInTheDocument();
+    expect(productHeading('Zebra Shades')).toBeInTheDocument();
+    expect(productHeading('Custom Design Zebra Shades')).toBeInTheDocument();
+    expect(queryProductHeading('Roller Shades')).not.toBeInTheDocument();
   });
 
   it('ignores an unrecognized ?tab value and falls back to "all"', () => {
     mockParams = new URLSearchParams('tab=not-a-real-tab');
     render(<ShopCatalog />);
     // falls back to showing everything rather than an empty/broken state
-    expect(productHeading('Custom Printed Roller Blinds')).toBeInTheDocument();
+    expect(productHeading('Custom Printed Roller Shades')).toBeInTheDocument();
   });
 
   it('clicking a tab button filters the visible products', async () => {
     const user = userEvent.setup();
     render(<ShopCatalog />);
-    await user.click(screen.getByRole('button', { name: 'Zebra Blinds' }));
-    expect(queryProductHeading('Roller Blinds')).not.toBeInTheDocument();
-    expect(productHeading('Zebra Blinds')).toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: 'Zebra Shades' }));
+    expect(queryProductHeading('Roller Shades')).not.toBeInTheDocument();
+    expect(productHeading('Zebra Shades')).toBeInTheDocument();
   });
 
   it('shows the "no products match" empty state and can clear filters', async () => {
     const user = userEvent.setup();
     render(<ShopCatalog />);
     // Combine a tab and filter that share no products
-    await user.click(screen.getByRole('button', { name: 'Zebra Blinds' }));
+    await user.click(screen.getByRole('button', { name: 'Zebra Shades' }));
     await user.click(screen.getByRole('button', { name: 'Large Windows' }));
     expect(screen.getByText(/no products match/i)).toBeInTheDocument();
     await user.click(screen.getByRole('button', { name: /clear all filters/i }));
-    expect(productHeading('Custom Printed Roller Blinds')).toBeInTheDocument();
+    expect(productHeading('Custom Printed Roller Shades')).toBeInTheDocument();
   });
 
   it('"View Details" links to that product\'s dedicated detail page', () => {
@@ -109,7 +109,7 @@ describe('ShopCatalog component', () => {
     const links = screen.getAllByRole('link', { name: 'View Details' });
     expect(links.length).toBe(products.length);
     // Spot-check one specific product resolves to its own URL, not a shared modal.
-    const zebraCard = productHeading('Zebra Blinds').closest('.pcard')!;
+    const zebraCard = productHeading('Zebra Shades').closest('.pcard')!;
     expect(within(zebraCard).getByRole('link', { name: 'View Details' })).toHaveAttribute('href', '/shop/zebra-plain');
   });
 });

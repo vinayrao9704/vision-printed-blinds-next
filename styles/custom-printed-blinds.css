@@ -96,7 +96,7 @@
 /* ---- Category sections (alternating layout) ---- */
 .cpb-section { padding: var(--section-py) 0; }
 .cpb-section:nth-of-type(odd) { background: var(--white); }
-.cpb-section:nth-of-type(even) { background: var(--off-white); }
+.cpb-section:nth-of-type(even) { background: var(--surface-2); }
 .cpb-section__inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -280,11 +280,11 @@
 .cpb-lightbox__nav--prev { left: 20px; }
 .cpb-lightbox__nav--next { right: 20px; }
 
-/* ---- Responsive: stack, photos always on top regardless of alternating side ---- */
+/* ---- Responsive: stack, details always on top regardless of alternating side ---- */
 @media (max-width: 900px) {
   .cpb-section__inner { grid-template-columns: 1fr; gap: 32px; }
-  .cpb-section__gallery { order: -1; }
-  .cpb-section__details { order: 2; }
+  .cpb-section__details { order: -1; }
+  .cpb-section__gallery { order: 2; }
 
   .cpb-gallery { height: auto; }
   .cpb-frame {

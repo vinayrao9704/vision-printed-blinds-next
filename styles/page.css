@@ -50,6 +50,12 @@
     radial-gradient(ellipse 60% 50% at 60% 40%, rgba(245,165,35,0.2) 0%, transparent 50%),
     linear-gradient(135deg, #060F1E 0%, #0B1E3A 50%, #060F1E 100%);
 }
+.page-hero--measure .page-hero__bg {
+  background: linear-gradient(135deg, #060F1E 0%, #0B1E3A 50%, #060F1E 100%);
+}
+.page-hero--measure .page-hero__overlay {
+  background: linear-gradient(180deg, rgba(6,15,30,0.6) 0%, rgba(6,15,30,0.75) 55%, rgba(6,15,30,0.9) 100%);
+}
 .page-hero__overlay {
   position: absolute;
   inset: 0;
@@ -763,6 +769,45 @@
   margin-bottom: 10px;
 }
 .qsb-card__desc { font-size: 14px; color: var(--text-mid); line-height: 1.65; margin-bottom: 18px; }
+.mistakes-wrap { max-width: 720px; margin: 0 auto; }
+.mistake-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.mistake-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+.mistake-list li:last-child { border-bottom: none; }
+.mistake-list__icon {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  margin-top: 1px;
+  border-radius: 50%;
+  background: rgba(245,165,35,0.12);
+  color: var(--gold-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mistake-list__icon svg { width: 13px; height: 13px; }
+@media (max-width: 480px) {
+  .qsb-card { padding: 20px; }
+  .mistake-list li { font-size: 13.5px; gap: 10px; padding: 10px 0; }
+  .mistake-list__icon { width: 22px; height: 22px; }
+  .mistake-list__icon svg { width: 11px; height: 11px; }
+}
 .qsb-contact {
   display: flex;
   align-items: center;
@@ -1514,7 +1559,7 @@
 }
 
 /* ================================================================
-   BLIND CATEGORY TEMPLATE (reused per category, e.g. /blinds/zebra-blinds)
+   BLIND CATEGORY TEMPLATE (reused per category, e.g. /products/zebra-shades)
    ================================================================ */
 .page-hero--blind-category {
   min-height: 88vh;

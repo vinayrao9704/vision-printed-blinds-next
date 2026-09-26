@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: '%s | Vision Printed Blinds',
   },
   description: 'Transform your windows with custom printed blinds. Turn photos, artwork, landscapes, patterns and logos into beautiful custom window blinds. Serving Edmonton, Alberta & Canada.',
-  keywords: ['custom printed blinds Edmonton', 'printed blinds Edmonton', 'custom blinds Edmonton', 'photo blinds Canada', 'custom photo blinds', 'printed roller blinds'],
+  keywords: ['custom printed blinds Edmonton', 'printed blinds Edmonton', 'custom blinds Edmonton', 'photo blinds Canada', 'custom photo blinds', 'printed roller shades'],
   openGraph: {
     type: 'website',
     title: 'Custom Printed Blinds Edmonton | Vision Printed Blinds',

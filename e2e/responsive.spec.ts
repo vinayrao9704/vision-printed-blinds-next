@@ -129,11 +129,11 @@ test.describe('touch targets are at least 44px tall on mobile', () => {
 });
 
 test.describe('colour swatches wrap on narrow screens', () => {
-  test('the zebra blinds colour swatches wrap instead of overflowing at phone width', async ({ page }) => {
+  test('the zebra shades colour swatches wrap instead of overflowing at phone width', async ({ page }) => {
     const width = page.viewportSize()!.width;
     test.skip(width > 480, 'only relevant at phone widths');
 
-    await page.goto('/products/zebra-blinds');
+    await page.goto('/products/zebra-shades');
     const wrap = await page.locator('.colour-swatches').evaluate((el) => getComputedStyle(el).flexWrap);
     expect(wrap).toBe('wrap');
   });

@@ -22,11 +22,8 @@ const items: GalleryItem[] = [
   { scene:'gi--sunflower', title:'Sunflower Field',        cat:'flowers' },
   { scene:'gi--lake',      title:'Lake Louise',            cat:'mountain' },
   { scene:'gi--branding',  title:'Corporate Branding',     cat:'branding', tall:true },
-  { scene:'gi--space',     title:'Space Adventure',        cat:'kids' },
   { scene:'gi--family',    title:'Family Memories',        cat:'family' },
-  { scene:'gi--beach2',    title:'Ocean Sunset',           cat:'beach' },
   { scene:'gi--rockies',   title:'Canadian Rockies',       cat:'mountain', tall:true },
-  { scene:'gi--blossom',   title:'Cherry Blossom',         cat:'flowers' },
   { scene:'gi--smart',     title:'Smart Home Setup',       cat:'motorized' },
   { scene:'gi--solar',     title:'Solar Shade Living Room',cat:'solar' },
   { scene:'gi--radha-krishna', title:'Radha Krishna Devotional Print', cat:'spiritual', image:'/images/gallery/radha-krishna.jpg', imageWidth:1326, imageHeight:1186 },
@@ -34,6 +31,11 @@ const items: GalleryItem[] = [
   { scene:'gi--princess',      title:'Little Princess',                cat:'kids',      image:'/images/gallery/little-princess.jpg', imageWidth:1536, imageHeight:1024 },
   { scene:'gi--angel-baby',    title:'A Little Angel',                 cat:'kids',      image:'/images/gallery/angel-baby.jpg', imageWidth:1024, imageHeight:1536 },
   { scene:'gi--family-lake',   title:'A Whole Lot of Love',            cat:'family',    image:'/images/gallery/family-lake-sunset.jpg', imageWidth:1374, imageHeight:1145 },
+  { scene:'gi--astronaut',     title:'Astronaut Space Adventure',      cat:'kids',      image:'/images/gallery/astronaut-zebra-blind.png', imageWidth:1086, imageHeight:1448 },
+  { scene:'gi--galaxy',        title:'Galaxy & Solar System',          cat:'kids',      image:'/images/gallery/galaxy-zebra-blind.png', imageWidth:1086, imageHeight:1448 },
+  { scene:'gi--beach-palm',    title:'Palm Tree Sunset',               cat:'beach',     image:'/images/gallery/beach-palm-zebra-blind.png', imageWidth:1086, imageHeight:1448 },
+  { scene:'gi--floral',        title:'Magnolia Branch Pattern',        cat:'flowers',   image:'/images/gallery/floral-zebra-blind.png', imageWidth:1086, imageHeight:1448 },
+  { scene:'gi--ganesha',       title:'Lord Ganesha Devotional Print',  cat:'spiritual', image:'/images/gallery/ganesha-roller-blind.png', imageWidth:1086, imageHeight:1448 },
 ];
 
 const filters = [

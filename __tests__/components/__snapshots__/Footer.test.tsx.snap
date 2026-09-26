@@ -22,12 +22,12 @@ exports[`Footer matches its snapshot 1`] = `
               class="footer__logo-img"
               data-nimg="1"
               decoding="async"
-              height="60"
+              height="80"
               loading="lazy"
-              src="/_next/image?url=%2Flogo.png&w=384&q=75"
-              srcset="/_next/image?url=%2Flogo.png&w=256&q=75 1x, /_next/image?url=%2Flogo.png&w=384&q=75 2x"
+              src="/_next/image?url=%2Flogo-dark.png&w=640&q=75"
+              srcset="/_next/image?url=%2Flogo-dark.png&w=256&q=75 1x, /_next/image?url=%2Flogo-dark.png&w=640&q=75 2x"
               style="color: transparent;"
-              width="190"
+              width="240"
             />
           </div>
           <p
@@ -91,7 +91,7 @@ exports[`Footer matches its snapshot 1`] = `
             </li>
             <li>
               <a
-                href="/products/roller-blinds"
+                href="/products/roller-shades"
               >
                 Blinds & Shades
               </a>
@@ -134,7 +134,7 @@ exports[`Footer matches its snapshot 1`] = `
           </h4>
           <ul>
             <li>
-              Custom Printed Roller Blinds
+              Custom Printed Roller Shades
             </li>
             <li>
               Blackout Blinds
@@ -143,7 +143,13 @@ exports[`Footer matches its snapshot 1`] = `
               Solar Shades
             </li>
             <li>
-              Zebra Blinds
+              Zebra Shades
+            </li>
+            <li>
+              Sheer Shades
+            </li>
+            <li>
+              Venetian Blinds
             </li>
             <li>
               Curtains & Drapes

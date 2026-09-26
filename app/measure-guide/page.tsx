@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import MeasureGuideInteractive from '@/components/MeasureGuideInteractive';
 
 export const metadata: Metadata = {
@@ -14,6 +15,10 @@ const tools = [
   { icon: '🙋', title: 'A SECOND PAIR OF HANDS', text: 'Optional, but helpful on wide windows — one person holds the tape at both ends for a straighter reading.' },
 ];
 
+const MISTAKE_ICON = (
+  <svg viewBox="0 0 24 24" fill="none"><path d="M12 7.5v6M12 17h.01" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+);
+
 const mistakes = [
   'Measuring only once — always double-check every number before ordering.',
   'Using a cloth or fabric tape measure instead of a rigid steel one.',
@@ -27,8 +32,10 @@ const mistakes = [
 export default function MeasureGuidePage() {
   return (
     <>
-      <section className="page-hero page-hero--about">
-        <div className="page-hero__bg"></div>
+      <section className="page-hero page-hero--measure">
+        <div className="page-hero__bg">
+          <Image src="/images/measure-guide-hero.png" alt="Measuring a window for custom blinds" fill sizes="100vw" style={{ objectFit: 'cover' }} priority />
+        </div>
         <div className="page-hero__overlay"></div>
         <div className="container page-hero__inner">
           <div className="page-breadcrumb"><Link href="/">Home</Link> &rsaquo; Measuring Guide</div>
@@ -37,7 +44,7 @@ export default function MeasureGuidePage() {
           <p className="page-hero__desc">A few careful measurements are all it takes for a perfect-fit blind. Follow this guide, or skip straight to a free in-person measurement with our team.</p>
           <div style={{display:'flex',gap:'12px',flexWrap:'wrap'}}>
             <Link href="/quote" className="btn btn--gold btn--lg btn--animated">Get Your Free Estimate</Link>
-            <Link href="/products/roller-blinds" className="btn btn--outline-white btn--lg">Explore Our Blinds</Link>
+            <Link href="/products/roller-shades" className="btn btn--outline-white btn--lg">Explore Our Blinds</Link>
           </div>
         </div>
       </section>
@@ -77,11 +84,14 @@ export default function MeasureGuidePage() {
             <span className="section-tag">AVOID THESE</span>
             <h2 className="section-title">COMMON MEASURING <span style={{color:'var(--gold)'}}>MISTAKES</span></h2>
           </div>
-          <div className="quote-sidebar-col" style={{maxWidth:'720px',margin:'0 auto'}}>
+          <div className="mistakes-wrap">
             <div className="qsb-card">
-              <ul style={{margin:0,paddingLeft:'20px',display:'flex',flexDirection:'column',gap:'12px'}}>
+              <ul className="mistake-list">
                 {mistakes.map(m => (
-                  <li key={m} style={{color:'var(--text-mid)',lineHeight:1.6,fontSize:'14px'}}>{m}</li>
+                  <li key={m}>
+                    <span className="mistake-list__icon" aria-hidden="true">{MISTAKE_ICON}</span>
+                    <span>{m}</span>
+                  </li>
                 ))}
               </ul>
             </div>

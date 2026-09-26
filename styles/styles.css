@@ -384,6 +384,41 @@ input, select, textarea { font-family: inherit; }
 .nav__phone:hover { color: var(--gold); }
 
 /* Hamburger */
+.nav__mobile-call {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  padding: 8px 16px 8px 12px;
+  background: var(--navy);
+  color: var(--white);
+  border-radius: 100px;
+  box-shadow: var(--shadow-lg);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: background var(--transition), color var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+.nav__mobile-call:hover,
+.nav__mobile-call:active {
+  background: var(--gold);
+  color: var(--navy-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-xl);
+}
+.nav__mobile-call-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.nav__mobile-call-icon svg { width: 18px; height: 18px; stroke: currentColor; }
+.nav__mobile-call-number {
+  white-space: nowrap;
+}
 .nav__hamburger {
   display: none;
   flex-direction: column;
@@ -1937,8 +1972,8 @@ input, select, textarea { font-family: inherit; }
    FOOTER
    ================================================================ */
 .footer {
-  background: var(--navy-dark);
-  border-top: 1px solid rgba(255,255,255,0.06);
+  background: var(--white);
+  border-top: 1px solid rgba(0,0,0,0.08);
   padding: 64px 0 0;
 }
 .footer__grid {
@@ -1947,13 +1982,13 @@ input, select, textarea { font-family: inherit; }
   gap: 40px;
   margin-bottom: 48px;
 }
-.footer__logo { display: flex; flex-direction: column; line-height: 1; margin-bottom: 12px; }
-.footer__logo-img { height: 52px; width: auto; display: block; }
+.footer__logo { display: flex; flex-direction: column; line-height: 1; margin-bottom: 18px; }
+.footer__logo-img { height: clamp(44px, 5vw, 76px); width: auto; display: block; align-self: flex-start; }
 .footer__logo-main {
   font-family: var(--font-display);
   font-size: 24px;
   font-weight: 900;
-  color: var(--white);
+  color: var(--navy-dark);
   letter-spacing: 0.05em;
 }
 .footer__logo-sub {
@@ -1973,21 +2008,21 @@ input, select, textarea { font-family: inherit; }
   color: var(--gold);
   margin-bottom: 12px;
 }
-.footer__location { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 16px; }
+.footer__location { font-size: 13px; color: rgba(0,0,0,0.55); line-height: 1.7; margin-bottom: 16px; }
 .footer__contact { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
-.footer__contact a { font-size: 13px; color: rgba(255,255,255,0.6); transition: color var(--transition); }
-.footer__contact a:hover { color: var(--gold); }
+.footer__contact a { font-size: 13px; color: rgba(0,0,0,0.65); transition: color var(--transition); }
+.footer__contact a:hover { color: var(--gold-dark); }
 .footer__contact-item { display: flex; align-items: center; gap: 8px; }
 .footer__contact-item svg { flex-shrink: 0; stroke: currentColor; }
 .footer__social { display: flex; gap: 10px; }
 .social-btn {
   width: 36px; height: 36px;
-  background: rgba(255,255,255,0.06);
+  background: rgba(0,0,0,0.05);
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255,255,255,0.6);
+  color: rgba(0,0,0,0.6);
   transition: all var(--transition);
 }
 .social-btn svg { width: 16px; height: 16px; }
@@ -2000,16 +2035,24 @@ input, select, textarea { font-family: inherit; }
   font-weight: 800;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
+  color: rgba(0,0,0,0.45);
   margin-bottom: 20px;
 }
 .footer__nav ul li { margin-bottom: 6px; }
-.footer__nav ul a { font-size: 13px; color: rgba(255,255,255,0.6); transition: color var(--transition); }
-.footer__nav ul a:hover { color: var(--gold); }
-.footer__services ul li { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 6px; }
-.footer__cta-col p { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+.footer__nav ul a { font-size: 13px; color: rgba(0,0,0,0.65); transition: color var(--transition); }
+.footer__nav ul a:hover { color: var(--gold-dark); }
+.footer__services ul li { font-size: 13px; color: rgba(0,0,0,0.55); margin-bottom: 6px; }
+.footer__cta-col p { font-size: 13px; color: rgba(0,0,0,0.55); margin-bottom: 16px; }
+.footer__cta-col .btn--outline-white {
+  color: var(--navy-dark);
+  border-color: rgba(0,0,0,0.3);
+}
+.footer__cta-col .btn--outline-white:hover {
+  background: rgba(0,0,0,0.05);
+  border-color: var(--navy-dark);
+}
 .footer__bottom {
-  border-top: 1px solid rgba(255,255,255,0.06);
+  border-top: 1px solid rgba(0,0,0,0.08);
   padding: 20px 0;
   display: flex;
   flex-direction: column;
@@ -2017,7 +2060,7 @@ input, select, textarea { font-family: inherit; }
   align-items: center;
   text-align: center;
 }
-.footer__bottom p { font-size: 11px; color: rgba(255,255,255,0.3); }
+.footer__bottom p { font-size: 11px; color: rgba(0,0,0,0.4); }
 
 /* ================================================================
    PRODUCT DETAIL PAGE
@@ -2453,6 +2496,64 @@ input, select, textarea { font-family: inherit; }
     linear-gradient(160deg, #D4B896 0%, #B89A70 40%, #A08250 70%, #8A6E40 100%);
 }
 
+/* ---- Sheer Shade Scenes ---- */
+.scene--sheer {
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.6) 0px, rgba(255,255,255,0.6) 16px,
+      rgba(255,255,255,0.25) 16px, rgba(255,255,255,0.25) 32px
+    ),
+    linear-gradient(160deg, #FCFAF5 0%, #F3EEE1 50%, #E8E0CC 100%);
+}
+.scene--sheer-butterfly {
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.7) 0px, rgba(255,255,255,0.7) 20px,
+      rgba(0,0,0,0.05) 20px, rgba(0,0,0,0.05) 24px
+    ),
+    linear-gradient(160deg, #FBF7EF 0%, #EFE7D3 50%, #DED1B0 100%);
+}
+
+/* ---- Venetian Blind Scenes ---- */
+.scene--venetian {
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.55) 0px, rgba(255,255,255,0.55) 14px,
+      rgba(0,0,0,0.08) 14px, rgba(0,0,0,0.08) 16px
+    ),
+    linear-gradient(160deg, #D8DBDF 0%, #B8BEC6 50%, #9AA2AC 100%);
+}
+.scene--venetian-aluminum {
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.6) 0px, rgba(255,255,255,0.6) 12px,
+      rgba(0,0,0,0.1) 12px, rgba(0,0,0,0.1) 14px
+    ),
+    linear-gradient(160deg, #E4E7EA 0%, #C4CAD1 50%, #9BA3AC 100%);
+}
+.scene--venetian-wood {
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.15) 0px, rgba(255,255,255,0.15) 14px,
+      rgba(0,0,0,0.12) 14px, rgba(0,0,0,0.12) 16px
+    ),
+    linear-gradient(160deg, #C9A876 0%, #B08C56 50%, #8A6C40 100%);
+}
+.scene--venetian-sunscreen {
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.35) 0px, rgba(255,255,255,0.35) 10px,
+      rgba(0,0,0,0.08) 10px, rgba(0,0,0,0.08) 12px
+    ),
+    linear-gradient(160deg, #C8D2DA 0%, #A8B4BE 50%, #8894A0 100%);
+}
+
 /* ---- Curtain & Drapery Scenes ---- */
 .scene--curtain-sheer {
   background:
@@ -2815,6 +2916,7 @@ input, select, textarea { font-family: inherit; }
   .nav__hamburger { display: flex; order: 1; margin-left: 0; }
   .nav__hamburger span { width: 20px; }
   .nav__actions { display: none; }
+  .nav__mobile-call { display: flex; order: 3; margin-left: auto; }
   .nav__mobile { display: block; }
   .hero__container { grid-template-columns: 1fr; }
   .hero__visual { display: none; }
@@ -2852,6 +2954,10 @@ input, select, textarea { font-family: inherit; }
   /* 44px minimum touch target on phone widths */
   .btn { min-height: 44px; }
   .pcard__ctas .btn { min-height: 44px; }
+
+  /* Icon-only call button so it doesn't crowd the centered logo */
+  .nav__mobile-call { padding: 5px; }
+  .nav__mobile-call-number { display: none; }
 }
 
 /* ---- Persistent phone widget (bottom-left, every page) ---- */

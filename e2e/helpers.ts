@@ -9,7 +9,7 @@ export interface RouteInfo {
 
 export const ROUTES: RouteInfo[] = [
   { path: '/', name: 'Home', keySection: '#hero' },
-  { path: '/products/zebra-blinds', name: 'Zebra Blinds', keySection: '.page-hero--blind-category' },
+  { path: '/products/zebra-shades', name: 'Zebra Shades', keySection: '.page-hero--blind-category' },
   { path: '/custom-printed', name: 'Custom Printed', keySection: '#custom-printed' },
   { path: '/shop/cp-roller', name: 'Product Detail', keySection: '.pdp-grid' },
   { path: '/gallery', name: 'Gallery', keySection: '.gallery-masonry' },

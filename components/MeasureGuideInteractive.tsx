@@ -25,7 +25,7 @@ const rules = [
 ];
 
 const blindTypes = [
-  'Roller Blinds', 'Zebra Blinds', 'Blackout Blinds', 'Solar Shades',
+  'Roller Shades', 'Zebra Shades', 'Blackout Blinds', 'Solar Shades',
   'Cellular / Honeycomb Shades', 'Roman Shades', 'Vertical Blinds', 'Motorized Blinds',
 ];
 

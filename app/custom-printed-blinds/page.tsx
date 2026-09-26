@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 // public/images/custom-printed/ using these same filenames (see
 // lib/customPrintedBlinds.ts) and they'll appear automatically.
 export default function CustomPrintedBlindsPage() {
-  const heroImageSrc = publicImageExists('images/custom-printed/hero.jpg') ? '/images/custom-printed/hero.jpg' : null;
+  const heroImageSrc = publicImageExists('images/custom-printed/hero.webp') ? '/images/custom-printed/hero.webp' : null;
 
   return (
     <div className="cpb-page">

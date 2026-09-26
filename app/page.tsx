@@ -29,7 +29,7 @@ export default function HomePage() {
             <p className="hero__desc">Transform ordinary windows into stunning focal points with custom-printed blinds featuring your photos, artwork, patterns, landscapes, logos, and designs.</p>
             <div className="hero__ctas">
               <Link href="/quote" className="btn btn--gold btn--lg btn--animated">Get Your Free Estimate</Link>
-              <Link href="/products/roller-blinds" className="btn btn--outline-white btn--lg">Explore Our Blinds</Link>
+              <Link href="/products/roller-shades" className="btn btn--outline-white btn--lg">Explore Our Blinds</Link>
             </div>
             <p className="hero__trust"><span className="maple">🍁</span> Serving Edmonton, Alberta &amp; Canada</p>
           </div>
