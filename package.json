@@ -15,6 +15,7 @@
     "test:all": "npm run test && npm run test:e2e"
   },
   "dependencies": {
+    "framer-motion": "^13.4.4",
     "next": "^15.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

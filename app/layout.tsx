@@ -2,10 +2,12 @@ import type { Metadata, Viewport } from 'next';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import ScrollReveal from '@/components/ScrollReveal';
+import PhoneWidget from '@/components/PhoneWidget';
 import './globals.css';
 import '../styles/styles.css';
 import '../styles/page.css';
 import '../styles/blind-designer.css';
+import '../styles/custom-printed-blinds.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://visionprintedblinds.ca'),
@@ -43,6 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Nav />
         <main>{children}</main>
         <Footer />
+        <PhoneWidget />
       </body>
     </html>
   );

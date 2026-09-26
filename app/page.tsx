@@ -1,6 +1,15 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { productCategories } from '@/lib/productCategories';
+import SpecialtyWall from '@/components/SpecialtyWall';
+
+const SPECIALTY_PHOTOS = [
+  { src: '/images/custom-print/landscape.webp', alt: 'Custom printed landscape blind', sizes: '(max-width: 900px) 50vw, 30vw' },
+  { src: '/images/custom-print/family.webp', alt: 'Custom printed family photo blind', sizes: '(max-width: 900px) 50vw, 25vw' },
+  { src: '/images/custom-print/abstract.webp', alt: 'Custom printed abstract art blind', sizes: '(max-width: 900px) 50vw, 22vw' },
+  { src: '/images/custom-print/kids.webp', alt: 'Custom printed kids nursery blind', sizes: '(max-width: 900px) 50vw, 25vw' },
+  { src: '/images/custom-print/branding.webp', alt: 'Custom printed business branding blind', sizes: '(max-width: 900px) 50vw, 18vw' },
+];
 
 export default function HomePage() {
   return (
@@ -76,23 +85,7 @@ export default function HomePage() {
               </div>
             </div>
             <div className="cp-hero__visual">
-              <div className="cp-wall">
-                <div className="cp-wall__photo cp-wall__photo--1">
-                  <Image src="/images/custom-print/landscape.webp" alt="Custom printed landscape blind" fill sizes="(max-width: 900px) 50vw, 30vw" style={{ objectFit: 'cover' }} />
-                </div>
-                <div className="cp-wall__photo cp-wall__photo--2">
-                  <Image src="/images/custom-print/family.webp" alt="Custom printed family photo blind" fill sizes="(max-width: 900px) 50vw, 25vw" style={{ objectFit: 'cover' }} />
-                </div>
-                <div className="cp-wall__photo cp-wall__photo--3">
-                  <Image src="/images/custom-print/abstract.webp" alt="Custom printed abstract art blind" fill sizes="(max-width: 900px) 50vw, 22vw" style={{ objectFit: 'cover' }} />
-                </div>
-                <div className="cp-wall__photo cp-wall__photo--4">
-                  <Image src="/images/custom-print/kids.webp" alt="Custom printed kids nursery blind" fill sizes="(max-width: 900px) 50vw, 25vw" style={{ objectFit: 'cover' }} />
-                </div>
-                <div className="cp-wall__photo cp-wall__photo--5">
-                  <Image src="/images/custom-print/branding.webp" alt="Custom printed business branding blind" fill sizes="(max-width: 900px) 50vw, 18vw" style={{ objectFit: 'cover' }} />
-                </div>
-              </div>
+              <SpecialtyWall photos={SPECIALTY_PHOTOS} />
             </div>
           </div>
         </div>

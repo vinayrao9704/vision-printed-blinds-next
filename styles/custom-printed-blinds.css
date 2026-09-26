@@ -1,0 +1,304 @@
+/* =====================================================
+   CUSTOM PRINTED BLINDS PAGE (/custom-printed-blinds)
+   Scoped under .cpb-page / .cpb-* so nothing bleeds into
+   other pages that already use similarly-named patterns.
+   ===================================================== */
+
+.cpb-page { overflow-x: hidden; }
+
+/* ---- Hero ---- */
+.cpb-hero {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: var(--nav-h);
+}
+.cpb-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  will-change: transform;
+}
+.cpb-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cpb-hero__bg--fallback {
+  background:
+    radial-gradient(ellipse 70% 60% at 75% 45%, #1341A0 0%, transparent 55%),
+    radial-gradient(ellipse 55% 70% at 15% 75%, #1A0050 0%, transparent 60%),
+    linear-gradient(135deg, #060F1E 0%, #0B1E3A 50%, #060F1E 100%);
+}
+.cpb-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(6,15,30,0.55) 0%, rgba(6,15,30,0.72) 60%, rgba(6,15,30,0.85) 100%);
+}
+.cpb-hero__inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding-bottom: 40px;
+}
+.cpb-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  font-weight: 900;
+  text-transform: none;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  margin: 14px 0 16px;
+  max-width: 780px;
+}
+.cpb-hero__word { display: inline-block; }
+.cpb-hero__desc {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.78);
+  max-width: 520px;
+  line-height: 1.65;
+  margin-bottom: 30px;
+}
+.cpb-hero__btns { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 28px; }
+.cpb-hero__jump {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.cpb-hero__jump-item { display: flex; align-items: center; gap: 10px; }
+.cpb-hero__jump a { color: rgba(255,255,255,0.65); transition: color var(--transition); }
+.cpb-hero__jump a:hover { color: var(--gold-light); }
+.cpb-hero__jump-dot { color: rgba(255,255,255,0.35); }
+.cpb-hero__arrow {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: 30px;
+  height: 30px;
+  color: rgba(255,255,255,0.6);
+}
+@media (max-width: 640px) {
+  .cpb-hero { min-height: 78vh; }
+}
+
+/* ---- Category sections (alternating layout) ---- */
+.cpb-section { padding: var(--section-py) 0; }
+.cpb-section:nth-of-type(odd) { background: var(--white); }
+.cpb-section:nth-of-type(even) { background: var(--off-white); }
+.cpb-section__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.cpb-section__index {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--gold-dark);
+  margin-bottom: 14px;
+}
+.cpb-section__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 2.8vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--navy);
+  margin-bottom: 18px;
+}
+.cpb-section__desc {
+  color: var(--text-mid);
+  line-height: 1.75;
+  margin-bottom: 22px;
+}
+.cpb-section__features { margin-bottom: 28px; }
+
+/* ---- Gallery wall: each sample shown as a mocked-up printed roller blind
+   (headrail + printed fabric + weighted bottom bar), not a plain photo. ---- */
+.cpb-section__gallery { position: relative; }
+.cpb-gallery {
+  position: relative;
+  height: clamp(460px, 52vw, 620px);
+}
+.cpb-frame {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background: none;
+  padding: 0;
+  filter: drop-shadow(0 14px 26px rgba(11,30,58,0.28));
+  cursor: pointer;
+  transition: filter 0.3s ease;
+  transform-origin: center top;
+}
+.cpb-frame__rail {
+  display: block;
+  height: 11px;
+  border-radius: 4px 4px 2px 2px;
+  background: linear-gradient(180deg, var(--navy-light) 0%, var(--navy) 55%, var(--navy-dark) 100%);
+  box-shadow: inset 0 -2px 3px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+.cpb-frame__fabric {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--off-white);
+}
+.cpb-frame__fabric img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cpb-frame--empty { cursor: default; }
+.cpb-frame__placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: repeating-linear-gradient(
+    135deg,
+    var(--surface-2) 0px, var(--surface-2) 10px,
+    var(--off-white) 10px, var(--off-white) 20px
+  );
+  color: var(--text-xlight);
+}
+.cpb-frame__placeholder-icon { width: 30%; max-width: 42px; }
+.cpb-frame__placeholder-icon svg { width: 100%; height: auto; }
+.cpb-frame__placeholder-label {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0 8px;
+}
+/* Faint printed-fabric roll lines over the image so it reads as a blind, not a photo. */
+.cpb-frame__texture {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px, transparent 18px,
+    rgba(0,0,0,0.05) 18px, rgba(0,0,0,0.05) 19px
+  );
+  mix-blend-mode: multiply;
+}
+.cpb-frame__bar {
+  display: block;
+  height: 7px;
+  margin-top: 1px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--navy) 0%, var(--navy-dark) 100%);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+}
+.cpb-frame--hovered {
+  filter: drop-shadow(0 22px 38px rgba(11,30,58,0.4));
+}
+.cpb-frame--dimmed { opacity: 0.8; filter: brightness(0.88) saturate(0.85); }
+
+/* Hover: bring the hovered frame forward, straighten it and scale it up.
+   Framer Motion drives the base transform (rotate/scale/y) via inline
+   style, so this needs to win the cascade without fighting that per-frame
+   inline value — handled with a wrapper scale/translate on hover instead
+   of touching `rotate`, which Motion continues to own. */
+.cpb-frame--hovered { scale: 1.06; }
+.cpb-frame:not(.cpb-frame--hovered):hover { scale: 1.03; }
+
+/* ---- Lightbox ---- */
+.cpb-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(6,15,30,0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+.cpb-lightbox__img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-xl);
+}
+.cpb-lightbox__close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  color: var(--white);
+  font-size: 26px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition);
+}
+.cpb-lightbox__close:hover { background: rgba(255,255,255,0.2); }
+.cpb-lightbox__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  color: var(--white);
+  font-size: 32px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition);
+}
+.cpb-lightbox__nav:hover { background: rgba(255,255,255,0.2); }
+.cpb-lightbox__nav--prev { left: 20px; }
+.cpb-lightbox__nav--next { right: 20px; }
+
+/* ---- Responsive: stack, photos always on top regardless of alternating side ---- */
+@media (max-width: 900px) {
+  .cpb-section__inner { grid-template-columns: 1fr; gap: 32px; }
+  .cpb-section__gallery { order: -1; }
+  .cpb-section__details { order: 2; }
+
+  .cpb-gallery { height: auto; }
+  .cpb-frame {
+    position: static !important;
+    width: 100% !important;
+    max-width: 340px;
+    margin: 0 auto 18px;
+    transform: none !important;
+    scale: 1 !important;
+  }
+  .cpb-frame:last-child { margin-bottom: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cpb-hero__bg { transform: none !important; }
+  .cpb-frame { transition: none; }
+}

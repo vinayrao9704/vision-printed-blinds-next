@@ -36,8 +36,14 @@ export default function QuotePage() {
 
               <div className="qsb-card">
                 <h3 className="qsb-card__title">PREFER TO TALK?</h3>
-                <p className="qsb-card__desc">Email us directly. We&apos;re happy to discuss your project.</p>
-                <a href="mailto:info@visionprintedblinds.ca" className="qsb-contact">
+                <p className="qsb-card__desc">Call or email us directly. We&apos;re happy to discuss your project.</p>
+                <a href="tel:+16479495489" className="qsb-contact">
+                  <div className="qsb-contact__icon">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </div>
+                  <div><strong>647-949-5489</strong><span>Call us directly</span></div>
+                </a>
+                <a href="mailto:info@visionprintedblinds.ca" className="qsb-contact" style={{marginTop:'10px'}}>
                   <div className="qsb-contact__icon">
                     <svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" strokeWidth="2"/><path d="M22 6l-10 7L2 6" stroke="currentColor" strokeWidth="2"/></svg>
                   </div>

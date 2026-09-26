@@ -30,16 +30,24 @@ describe('Nav', () => {
     const labels = Array.from(nav.querySelectorAll(':scope > li')).map(
       (li) => li.querySelector(':scope > a, :scope > button')?.textContent?.trim()
     );
-    expect(labels).toEqual(['Blinds', 'Shades', 'Curtains & Drapes', 'Custom Printed Blinds', 'Gallery', 'Measuring Guide', 'About']);
+    expect(labels).toEqual(['Blinds', 'Shades', 'Curtains & Drapes', '★ Custom Printed Blinds', 'Gallery', 'Measuring Guide', 'About']);
     expect(screen.queryByText('Shop Blinds')).not.toBeInTheDocument();
     expect(screen.queryByRole('link', { name: 'Contact' })).not.toBeInTheDocument();
   });
 
   it('shows a dropdown trigger button (not a link) for each category with children', () => {
     render(<Nav />);
-    ['Blinds', 'Shades', 'Curtains & Drapes', 'Custom Printed Blinds'].forEach((label) => {
+    ['Blinds', 'Shades', 'Curtains & Drapes'].forEach((label) => {
       expect(screen.getByRole('button', { name: new RegExp(`^${label}`) })).toBeInTheDocument();
     });
+  });
+
+  it('renders Custom Printed Blinds as a plain link (not a dropdown), with a star and its own color class', () => {
+    render(<Nav />);
+    const link = screen.getByRole('link', { name: /Custom Printed Blinds/ });
+    expect(link).toHaveAttribute('href', '/custom-printed-blinds');
+    expect(link).toHaveClass('nav__link--custom');
+    expect(link).toHaveTextContent('★');
   });
 
   it('marks the current page\'s nav link as active', () => {

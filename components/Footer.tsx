@@ -14,6 +14,10 @@ export default function Footer() {
             <p className="footer__tagline">PRINT. COVER. TRANSFORM.</p>
             <p className="footer__location"><span className="maple">🍁</span> Edmonton, Alberta, Canada</p>
             <div className="footer__contact">
+              <a href="tel:+16479495489" className="footer__contact-item">
+                <svg viewBox="0 0 24 24" fill="none" width="14" height="14"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                647-949-5489
+              </a>
               <a href="mailto:info@visionprintedblinds.ca">info@visionprintedblinds.ca</a>
             </div>
           </div>

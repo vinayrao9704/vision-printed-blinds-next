@@ -23,11 +23,9 @@ const DROPDOWNS: DropdownGroup[] = [
     key: 'shades',
     label: 'Shades',
     items: [
-      { label: 'Blackout Shades', href: '/products/blackout-shades' },
       { label: 'Solar Shades', href: '/products/solar-shades' },
       { label: 'Cellular Shades', href: '/products/cellular-shades' },
       { label: 'Roman Shades', href: '/products/roman-shades' },
-      { label: 'Natural Shades', href: '/products/natural-shades' },
     ],
   },
   {
@@ -37,18 +35,6 @@ const DROPDOWNS: DropdownGroup[] = [
       { label: 'Sheer Curtains', href: '/products/sheer-curtains' },
       { label: 'Blackout Curtains', href: '/products/blackout-curtains' },
       { label: 'Pinch Pleat Drapes', href: '/products/pinch-pleat-drapes' },
-      { label: 'Custom Printed Curtains', href: '/products/custom-printed-curtains' },
-    ],
-  },
-  {
-    key: 'custom',
-    label: 'Custom Printed Blinds',
-    items: [
-      { label: 'Photo Blinds', href: '/custom-printed', className: 'mega-link--gold' },
-      { label: 'Landscape Prints', href: '/custom-printed', className: 'mega-link--gold' },
-      { label: 'Artwork & Patterns', href: '/custom-printed', className: 'mega-link--gold' },
-      { label: 'Kids Designs', href: '/custom-printed', className: 'mega-link--gold' },
-      { label: 'Business Branding', href: '/custom-printed', className: 'mega-link--gold' },
     ],
   },
 ];
@@ -135,6 +121,7 @@ export default function Nav() {
             <li
               key={group.key}
               className="nav__item nav__item--drop"
+              onMouseLeave={() => setOpenMenu((m) => (m === group.key ? null : m))}
             >
               <button
                 type="button"
@@ -158,6 +145,7 @@ export default function Nav() {
             </li>
           ))}
 
+          <li><Link href="/custom-printed-blinds" className={`nav__link nav__link--custom${isActive('/custom-printed-blinds') ? ' active' : ''}`}><span className="nav__link-star" aria-hidden="true">★</span> Custom Printed Blinds</Link></li>
           <li><Link href="/gallery"className={`nav__link${isActive('/gallery') ? ' active' : ''}`}>Gallery</Link></li>
           <li><Link href="/measure-guide" className={`nav__link${isActive('/measure-guide') ? ' active' : ''}`}>Measuring Guide</Link></li>
           <li><Link href="/about"  className={`nav__link${isActive('/about')   ? ' active' : ''}`}>About</Link></li>
@@ -209,6 +197,7 @@ export default function Nav() {
         ))}
 
         <ul className="nav__mobile-links">
+          <li><Link href="/custom-printed-blinds" className="nav__link--custom"><span className="nav__link-star" aria-hidden="true">★</span> Custom Printed Blinds</Link></li>
           <li><Link href="/gallery">Gallery</Link></li>
           <li><Link href="/measure-guide">Measuring Guide</Link></li>
           <li><Link href="/about">About &amp; FAQ</Link></li>

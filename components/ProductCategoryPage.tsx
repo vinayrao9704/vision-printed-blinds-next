@@ -27,15 +27,23 @@ export default function ProductCategoryPage({ category }: { category: ProductCat
       {/* 3. ABOUT */}
       <section className="section" style={{ background: 'var(--white)' }}>
         <div className="container">
-          <div className="about-split animate-in">
+          <div className="about-split about-split--product animate-in">
             <div className="about-split__text">
               <span className="section-tag">ABOUT {category.name.toUpperCase()}</span>
-              <h2 className="section-title" style={{ textAlign: 'left', marginLeft: 0 }}>HOW {category.name.toUpperCase()}<br/><span style={{ color: 'var(--gold)' }}>WORK</span></h2>
+              <h2 className="section-title" style={{ textAlign: 'left', marginLeft: 0 }}>{category.aboutHeadline || category.name}</h2>
               {category.aboutParagraphs.map((p) => (
                 <p key={p} style={{ color: 'var(--text-mid)', lineHeight: 1.75, marginBottom: '18px' }}>{p}</p>
               ))}
-              <ul className="cp-hero__list" style={{ color: 'var(--text-mid)' }}>
-                {category.aboutBullets.map((b) => <li key={b}>✓ {b}</li>)}
+              <h3 className="pdp-card__head--plain">Key Features</h3>
+              <ul className="feature-list">
+                {category.aboutBullets.map((b) => (
+                  <li key={b}>
+                    <span className="feature-list__icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    </span>
+                    <span>{b}</span>
+                  </li>
+                ))}
               </ul>
             </div>
             <div className="about-split__visual animate-in">

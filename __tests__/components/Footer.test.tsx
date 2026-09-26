@@ -14,9 +14,10 @@ describe('Footer', () => {
     expect(email).toHaveAttribute('href', 'mailto:info@visionprintedblinds.ca');
   });
 
-  it('does not render a phone number (removed per business requirements)', () => {
+  it('renders a working phone contact link', () => {
     render(<Footer />);
-    expect(screen.queryByText(/438-866-6867/)).not.toBeInTheDocument();
+    const phone = screen.getByRole('link', { name: /647-949-5489/i });
+    expect(phone).toHaveAttribute('href', 'tel:+16479495489');
   });
 
   it('renders links to every main page', () => {

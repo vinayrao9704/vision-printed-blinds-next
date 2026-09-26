@@ -23,6 +23,9 @@
 # vercel
 .vercel
 
+# local-only reference images, not part of the deployed site
+/custom-printed-blinds-images/
+
 # env files
 .env*
 !.env.example

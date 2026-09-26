@@ -448,6 +448,7 @@
   align-items: center;
 }
 .about-split__text .section-title { margin-left: 0; }
+.about-split--product .section-title { font-size: clamp(1.6rem, 2.6vw, 2.2rem); }
 .about-visual-stack {
   position: relative;
   height: 460px;
@@ -1134,12 +1135,15 @@
 }
 .cp-wall__photo {
   position: absolute;
+  display: block;
+  padding: 0;
   border-radius: var(--radius-md);
   overflow: hidden;
   box-shadow: var(--shadow-xl);
   border: 6px solid var(--white);
   background: var(--white);
   transition: transform 0.3s ease;
+  cursor: pointer;
 }
 .cp-wall__photo:hover { transform: rotate(0deg) scale(1.04); z-index: 10; }
 .cp-wall__photo--1 { width: 52%; height: 220px; top: 0; left: 0; transform: rotate(-4deg); z-index: 1; }
@@ -1512,17 +1516,75 @@
 /* ================================================================
    BLIND CATEGORY TEMPLATE (reused per category, e.g. /blinds/zebra-blinds)
    ================================================================ */
+.page-hero--blind-category {
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  padding-top: var(--nav-h);
+  padding-bottom: 0;
+}
+.page-hero--blind-category .page-hero__inner { width: 100%; }
 .page-hero--blind-category .page-hero__bg {
   background:
     radial-gradient(ellipse 70% 60% at 75% 45%, #1341A0 0%, transparent 55%),
     radial-gradient(ellipse 55% 70% at 15% 75%, #1A0050 0%, transparent 60%),
     linear-gradient(135deg, #060F1E 0%, #0B1E3A 50%, #060F1E 100%);
 }
+@media (max-width: 768px) {
+  .page-hero--blind-category { min-height: 70vh; }
+}
 .page-hero__overlay--dark {
   background:
     repeating-linear-gradient(to bottom, transparent 0px, transparent 60px, rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 62px),
     linear-gradient(180deg, rgba(6,15,30,0.35) 0%, rgba(6,15,30,0.65) 100%);
 }
+
+/* .cp-hero__list li hard-codes a light-on-dark colour for its original home
+   (the navy cp-hero section) — on a white background (the About panel) that
+   renders as invisible white-on-white text without this. */
+.about-split__text .cp-hero__list li { color: var(--text-mid); }
+
+.pdp-card__head--plain {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.feature-list li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 4px;
+  border-bottom: 1px solid var(--border);
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.4;
+}
+.feature-list li:last-child { border-bottom: none; }
+.feature-list__icon {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(245,165,35,0.12);
+  color: var(--gold-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.feature-list__icon svg { width: 15px; height: 15px; }
 
 .split-visual {
   position: relative;
