@@ -46,7 +46,7 @@ export function detailRows(p: Product): [string, string][] {
     rows.push(['Operation', 'Manual (cordless or corded)']);
   }
   if (p.tags.includes('custom-size')) rows.push(['Sizing', 'Custom-made to your exact measurements']);
-  if (p.tags.includes('commercial')) rows.push(['Use Case', 'Commercial grade — suitable for business use']);
+  if (p.tags.includes('commercial')) rows.push(['Use Case', 'Commercial grade, suitable for business use']);
   return rows;
 }
 

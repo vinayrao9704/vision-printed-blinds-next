@@ -180,7 +180,7 @@ export default function Nav() {
       </div>
 
       {/* Mobile menu */}
-      <div ref={mobileMenuRef} className={`nav__mobile${mobileOpen ? ' open' : ''}`} aria-hidden={!mobileOpen}>
+      <div ref={mobileMenuRef} className={`nav__mobile${mobileOpen ? ' open' : ''}`} aria-hidden={!mobileOpen} inert={!mobileOpen}>
         <ul className="nav__mobile-links">
           <li><Link href="/">Home</Link></li>
         </ul>

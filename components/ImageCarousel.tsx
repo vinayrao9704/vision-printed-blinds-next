@@ -40,7 +40,7 @@ export default function ImageCarousel({ slides }: { slides: GallerySlide[] }) {
         <svg viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
       </button>
 
-      <div className="img-carousel__track" ref={trackRef}>
+      <div className="img-carousel__track" ref={trackRef} tabIndex={0} role="region" aria-label="Image gallery, scrollable">
         {slides.map((s, i) => (
           <div className="img-carousel__slide" key={s.alt + i}>
             {s.image ? (

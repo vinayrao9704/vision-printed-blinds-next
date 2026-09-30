@@ -3,16 +3,21 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useReducedMotion } from '@/lib/useReducedMotion';
+import { customPrintCategories } from '@/lib/customPrintedBlinds';
 
 const HEADLINE_WORDS = ['Your', 'Photo.', 'Your', 'Style.', 'Your', 'Window.'];
 
-const QUICK_LINKS = [
-  { href: '#photo', label: 'Photo' },
-  { href: '#landscape', label: 'Landscape' },
-  { href: '#artwork', label: 'Artwork' },
-  { href: '#kids', label: 'Kids' },
-  { href: '#business', label: 'Business' },
-];
+const QUICK_LINK_LABELS: Record<string, string> = {
+  photo: 'Photo',
+  landscape: 'Landscape',
+  artwork: 'Artwork',
+  kids: 'Kids',
+  business: 'Business',
+};
+
+const QUICK_LINKS = customPrintCategories
+  .filter((category) => category.enabled !== false)
+  .map((category) => ({ href: `#${category.id}`, label: QUICK_LINK_LABELS[category.id] ?? category.label }));
 
 export default function CustomPrintedHero({ heroImageSrc }: { heroImageSrc: string | null }) {
   const reduceMotion = useReducedMotion();

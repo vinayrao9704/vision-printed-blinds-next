@@ -7,6 +7,7 @@ export interface CustomPrintCategory {
   features: string[];
   images: string[];
   imageLayout: 'left' | 'right';
+  enabled?: boolean;
 }
 
 export const customPrintCategories: CustomPrintCategory[] = [
@@ -71,7 +72,7 @@ export const customPrintCategories: CustomPrintCategory[] = [
       'Blackout options for better sleep',
       'Safe, cordless operation available',
     ],
-    images: ['kids-1.webp', 'kids-2.webp', 'kids-3.webp', 'kids-4.webp', 'kids-5.webp', 'kids-6.webp', 'kids-7.webp'],
+    images: ['kids-1.webp', 'kids-2.webp', 'kids-3.webp', 'kids-4.webp', 'kids-6.webp', 'kids-7.webp'],
     imageLayout: 'right',
   },
   {
@@ -89,5 +90,6 @@ export const customPrintCategories: CustomPrintCategory[] = [
     ],
     images: ['business-1.jpg', 'business-2.jpg', 'business-3.jpg', 'business-4.jpg', 'business-5.jpg', 'business-6.jpg'],
     imageLayout: 'left',
+    enabled: false, // hidden for now — set back to true (or remove this line) to bring the section back
   },
 ];

@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState, type RefObject } from 'react';
+import { useRef, useState, useEffect, type RefObject } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 import Lightbox from '@/components/Lightbox';
@@ -109,6 +109,64 @@ export default function GalleryWall({ slides }: { slides: { src: string | null; 
   const closeLightbox = () => setLightboxIndex(null);
   const prev = () => setLightboxIndex((i) => (i === null ? null : (i - 1 + realSlides.length) % realSlides.length));
   const next = () => setLightboxIndex((i) => (i === null ? null : (i + 1) % realSlides.length));
+
+  // On the mobile slider layout (see the ≤900px rules in
+  // custom-printed-blinds.css), slowly auto-pan the strip to the left so it
+  // reads as a moving slider rather than a static row. Pauses while the
+  // visitor is touching/dragging it, and is fully off for reduced motion.
+  useEffect(() => {
+    if (reduceMotion) return;
+    const el = containerRef.current;
+    if (!el) return;
+
+    const mq = window.matchMedia('(max-width: 900px)');
+    let active = mq.matches;
+    let paused = false;
+    let raf = 0;
+    let lastTime: number | null = null;
+    let pos = el.scrollLeft; // tracked in JS float — el.scrollLeft itself rounds to
+                              // whole pixels, so reading it back each frame would
+                              // truncate sub-pixel increments before they can add up
+    const SPEED = 18; // px per second — slow drift
+
+    const tick = (time: number) => {
+      if (lastTime === null) lastTime = time;
+      const dt = (time - lastTime) / 1000;
+      lastTime = time;
+
+      if (active && !paused) {
+        const maxScroll = el.scrollWidth - el.clientWidth;
+        if (maxScroll > 1) {
+          pos += SPEED * dt;
+          if (pos >= maxScroll) pos = 0;
+          el.scrollLeft = pos;
+        }
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+
+    const pause = () => { paused = true; };
+    const resume = () => { pos = el.scrollLeft; paused = false; };
+    const onMqChange = (e: MediaQueryListEvent) => { active = e.matches; };
+
+    el.addEventListener('pointerdown', pause);
+    el.addEventListener('pointerup', resume);
+    el.addEventListener('pointercancel', resume);
+    el.addEventListener('mouseenter', pause);
+    el.addEventListener('mouseleave', resume);
+    mq.addEventListener('change', onMqChange);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      el.removeEventListener('pointerdown', pause);
+      el.removeEventListener('pointerup', resume);
+      el.removeEventListener('pointercancel', resume);
+      el.removeEventListener('mouseenter', pause);
+      el.removeEventListener('mouseleave', resume);
+      mq.removeEventListener('change', onMqChange);
+    };
+  }, [reduceMotion]);
 
   return (
     <div className="cpb-gallery" ref={containerRef} onKeyDown={(e) => {

@@ -286,16 +286,40 @@
   .cpb-section__details { order: -1; }
   .cpb-section__gallery { order: 2; }
 
-  .cpb-gallery { height: auto; }
+  /* Horizontal swipeable slider: images sit side by side instead of the
+     desktop collage stack, which has no room to breathe on narrow screens.
+     No scroll-snap here — the strip auto-drifts continuously (see
+     GalleryWall.tsx), and snap points would fight that constant motion. */
+  .cpb-gallery {
+    height: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 16px;
+    padding: 4px 4px 14px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .cpb-gallery::-webkit-scrollbar { display: none; }
   .cpb-frame {
     position: static !important;
-    width: 100% !important;
-    max-width: 340px;
-    margin: 0 auto 18px;
+    flex: 0 0 auto !important;
+    width: 68% !important;
+    max-width: 260px;
+    margin: 0;
     transform: none !important;
     scale: 1 !important;
+    /* The fade/slide-in reveal is scroll-into-view driven and only tracks
+       vertical intersection; slides scrolled out horizontally by the
+       slider never cross that threshold and would stay invisible until
+       manually swiped far enough. Force them fully visible here instead. */
+    opacity: 1 !important;
   }
-  .cpb-frame:last-child { margin-bottom: 0; }
+}
+
+@media (max-width: 480px) {
+  .cpb-frame { width: 76% !important; max-width: 280px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

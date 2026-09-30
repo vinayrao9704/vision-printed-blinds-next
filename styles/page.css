@@ -40,10 +40,14 @@
     radial-gradient(ellipse 70% 60% at 60% 40%, #1A0050 0%, transparent 55%),
     linear-gradient(135deg, #060F1E 0%, #0B1E3A 50%, #060F1E 100%);
 }
+.page-hero--gallery .page-hero__overlay {
+  background: linear-gradient(100deg, rgba(6,15,30,0.85) 0%, rgba(6,15,30,0.55) 40%, rgba(6,15,30,0.25) 100%);
+}
 .page-hero--about .page-hero__bg {
-  background:
-    radial-gradient(ellipse 50% 60% at 40% 50%, #1341A0 0%, transparent 55%),
-    linear-gradient(135deg, #060F1E 0%, #0B1E3A 50%, #060F1E 100%);
+  background: linear-gradient(135deg, #060F1E 0%, #0B1E3A 50%, #060F1E 100%);
+}
+.page-hero--about .page-hero__overlay {
+  background: linear-gradient(120deg, rgba(6,15,30,0.9) 0%, rgba(6,15,30,0.75) 45%, rgba(6,15,30,0.45) 100%);
 }
 .page-hero--quote .page-hero__bg {
   background:
@@ -80,6 +84,12 @@
 }
 .page-breadcrumb a { color: rgba(255,255,255,0.5); }
 .page-breadcrumb a:hover { color: var(--gold); }
+/* .pdp has a light background, unlike the dark page-hero this component
+   normally lives in, so the white-on-dark breadcrumb needs a dark-on-light
+   override here or it renders nearly invisible. */
+.pdp .page-breadcrumb { color: var(--text-mid); }
+.pdp .page-breadcrumb a { color: var(--navy); text-decoration: underline; }
+.pdp .page-breadcrumb a:hover { color: var(--gold-dark); }
 .page-hero__title {
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 6vw, 4.5rem);
@@ -718,7 +728,7 @@
   display: flex;
   align-items: center;
 }
-.qf-note { font-size: 12px; color: var(--text-xlight); text-align: center; }
+.qf-note { font-size: 12px; color: var(--text-mid); text-align: center; }
 
 /* Success */
 .qf-success {
@@ -1024,7 +1034,7 @@
 /* Stats bar — big number grid variant */
 .stats-bar__grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
 }
 .stats-bar__grid .stats-bar__item {
   flex-direction: column;

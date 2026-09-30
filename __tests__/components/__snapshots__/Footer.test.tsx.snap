@@ -78,9 +78,9 @@ exports[`Footer matches its snapshot 1`] = `
         <div
           class="footer__nav"
         >
-          <h4>
+          <h3>
             Pages
-          </h4>
+          </h3>
           <ul>
             <li>
               <a
@@ -129,9 +129,9 @@ exports[`Footer matches its snapshot 1`] = `
         <div
           class="footer__services"
         >
-          <h4>
+          <h3>
             Products
-          </h4>
+          </h3>
           <ul>
             <li>
               Custom Printed Roller Shades
@@ -168,11 +168,11 @@ exports[`Footer matches its snapshot 1`] = `
         <div
           class="footer__cta-col"
         >
-          <h4>
+          <h3>
             Get Started
-          </h4>
+          </h3>
           <p>
-            No prices listed — every blind is custom made to order.
+            No prices listed. Every blind is custom made to order.
           </p>
           <a
             class="btn btn--gold"
@@ -183,7 +183,7 @@ exports[`Footer matches its snapshot 1`] = `
           </a>
           <a
             class="btn btn--outline-white"
-            href="/custom-printed"
+            href="/custom-printed-blinds"
             style="width: 100%; justify-content: center;"
           >
             Shop Custom Printed

@@ -17,15 +17,6 @@ interface GalleryItem {
 }
 
 const items: GalleryItem[] = [
-  { scene:'gi--mountain1', title:'Rocky Mountain Sunrise', cat:'mountain' },
-  { scene:'gi--beach1',    title:'Tropical Paradise',      cat:'beach', tall:true },
-  { scene:'gi--sunflower', title:'Sunflower Field',        cat:'flowers' },
-  { scene:'gi--lake',      title:'Lake Louise',            cat:'mountain' },
-  { scene:'gi--branding',  title:'Corporate Branding',     cat:'branding', tall:true },
-  { scene:'gi--family',    title:'Family Memories',        cat:'family' },
-  { scene:'gi--rockies',   title:'Canadian Rockies',       cat:'mountain', tall:true },
-  { scene:'gi--smart',     title:'Smart Home Setup',       cat:'motorized' },
-  { scene:'gi--solar',     title:'Solar Shade Living Room',cat:'solar' },
   { scene:'gi--radha-krishna', title:'Radha Krishna Devotional Print', cat:'spiritual', image:'/images/gallery/radha-krishna.jpg', imageWidth:1326, imageHeight:1186 },
   { scene:'gi--kids-boy',      title:'Custom Kids Name Design',        cat:'kids',      image:'/images/gallery/kids-graffiti-boy.jpg', imageWidth:1402, imageHeight:1122 },
   { scene:'gi--princess',      title:'Little Princess',                cat:'kids',      image:'/images/gallery/little-princess.jpg', imageWidth:1536, imageHeight:1024 },
@@ -36,6 +27,10 @@ const items: GalleryItem[] = [
   { scene:'gi--beach-palm',    title:'Palm Tree Sunset',               cat:'beach',     image:'/images/gallery/beach-palm-zebra-blind.png', imageWidth:1086, imageHeight:1448 },
   { scene:'gi--floral',        title:'Magnolia Branch Pattern',        cat:'flowers',   image:'/images/gallery/floral-zebra-blind.png', imageWidth:1086, imageHeight:1448 },
   { scene:'gi--ganesha',       title:'Lord Ganesha Devotional Print',  cat:'spiritual', image:'/images/gallery/ganesha-roller-blind.png', imageWidth:1086, imageHeight:1448 },
+  { scene:'gi--divine-mercy',  title:'Divine Mercy Devotional Print',  cat:'spiritual', image:'/images/gallery/divine-mercy-blind.jpg', imageWidth:1159, imageHeight:1358 },
+  { scene:'gi--proper-meat',   title:'Restaurant Logo Branding',       cat:'branding',  image:'/images/gallery/proper-meat-branding-blind.jpg', imageWidth:1159, imageHeight:1358 },
+  { scene:'gi--buddha',        title:'Serene Buddha Statue',           cat:'spiritual', image:'/images/gallery/buddha-statue-blind.jpg', imageWidth:1200, imageHeight:1600 },
+  { scene:'gi--waterfall',     title:'Forest Waterfall',               cat:'mountain',  image:'/images/gallery/waterfall-forest-blind.jpg', imageWidth:1199, imageHeight:1600 },
 ];
 
 const filters = [
@@ -47,8 +42,6 @@ const filters = [
   { id:'kids', label:'Kids & Nursery' },
   { id:'spiritual', label:'Spiritual & Religious' },
   { id:'branding', label:'Business & Branding' },
-  { id:'motorized', label:'Motorized' },
-  { id:'solar', label:'Solar Shades' },
 ];
 
 export default function GalleryGrid() {
@@ -68,7 +61,7 @@ export default function GalleryGrid() {
   }
 
   const lightboxEl = (
-    <div className={`lightbox${lightbox ? ' open' : ''}`} role="dialog" aria-modal="true" aria-hidden={!lightbox}>
+    <div className={`lightbox${lightbox ? ' open' : ''}`} role="dialog" aria-modal="true" aria-hidden={!lightbox} inert={!lightbox}>
       <button className="lightbox__close" onClick={()=>setLightbox(null)} aria-label="Close">&times;</button>
       <button className="lightbox__prev" onClick={()=>nav(-1)} aria-label="Previous image">&#8249;</button>
       <div className="lightbox__stage">

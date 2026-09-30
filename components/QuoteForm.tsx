@@ -95,8 +95,8 @@ export default function QuoteForm() {
         <div className="qf-success">
           <div className="qf-success__icon">✓</div>
           <h3>Quote Request Sent!</h3>
-          <p>Thank you — we&apos;ve received your request and will be in touch within one business day. Keep an eye on your inbox (and spam folder, just in case).</p>
-          <p>In the meantime, browse our <Link href="/custom-printed" style={{color:'var(--gold)'}}>custom printed blinds</Link> for inspiration.</p>
+          <p>Thank you. We&apos;ve received your request and will be in touch within one business day. Keep an eye on your inbox (and spam folder, just in case).</p>
+          <p>In the meantime, browse our <Link href="/custom-printed-blinds" style={{color:'#8A5A00',textDecoration:'underline'}}>custom printed blinds</Link> for inspiration.</p>
         </div>
       </div>
     );
@@ -116,7 +116,7 @@ export default function QuoteForm() {
             <label className="qf-label" htmlFor="qfName">Full Name <span className="qf-req">*</span></label>
             <input
               className={`qf-input${errors.name ? ' is-error' : ''}`}
-              type="text" id="qfName" name="name" placeholder="Jane Smith" autoComplete="name"
+              type="text" id="qfName" name="name" placeholder="Jane Smith" autoComplete="name" required
               aria-invalid={!!errors.name} aria-describedby={errors.name ? 'qfName-error' : undefined}
               onChange={() => clearError('name')}
             />
@@ -126,7 +126,7 @@ export default function QuoteForm() {
             <label className="qf-label" htmlFor="qfPhone">Phone Number <span className="qf-req">*</span></label>
             <input
               className={`qf-input${errors.phone ? ' is-error' : ''}`}
-              type="tel" id="qfPhone" name="phone" placeholder="780-555-0100" autoComplete="tel"
+              type="tel" id="qfPhone" name="phone" placeholder="780-555-0100" autoComplete="tel" required
               aria-invalid={!!errors.phone} aria-describedby={errors.phone ? 'qfPhone-error' : undefined}
               onChange={() => clearError('phone')}
             />
@@ -139,7 +139,7 @@ export default function QuoteForm() {
             <label className="qf-label" htmlFor="qfEmail">Email Address <span className="qf-req">*</span></label>
             <input
               className={`qf-input${errors.email ? ' is-error' : ''}`}
-              type="email" id="qfEmail" name="email" placeholder="jane@example.com" autoComplete="email"
+              type="email" id="qfEmail" name="email" placeholder="jane@example.com" autoComplete="email" required
               aria-invalid={!!errors.email} aria-describedby={errors.email ? 'qfEmail-error' : undefined}
               onChange={() => clearError('email')}
             />
@@ -163,7 +163,7 @@ export default function QuoteForm() {
           <label className="qf-label" htmlFor="qfMessage">Message <span className="qf-req">*</span></label>
           <textarea
             className={`qf-input qf-textarea${errors.message ? ' is-error' : ''}`}
-            id="qfMessage" name="message" rows={5}
+            id="qfMessage" name="message" rows={5} required
             aria-invalid={!!errors.message} aria-describedby={errors.message ? 'qfMessage-error' : undefined}
             onChange={() => clearError('message')}
             defaultValue={prefillMessage}
@@ -174,7 +174,7 @@ export default function QuoteForm() {
         <div className="qf-submit-row">
           <div className="qf-consent">
             <label className="qf-consent__label">
-              <input type="checkbox" id="qfConsent" name="consent" onChange={() => clearError('consent')}/>
+              <input type="checkbox" id="qfConsent" name="consent" required onChange={() => clearError('consent')}/>
               <span>I agree to be contacted by Vision Printed Blinds regarding my quote request. We respect your privacy and will never share your information. <span className="qf-req">*</span></span>
             </label>
             {errors.consent && <p className="qf-error-msg">{errors.consent}</p>}

@@ -23,7 +23,7 @@ export default function Footer() {
           </div>
 
           <div className="footer__nav">
-            <h4>Pages</h4>
+            <h3>Pages</h3>
             <ul>
               <li><Link href="/">Home</Link></li>
               <li><Link href="/products/roller-shades">Blinds &amp; Shades</Link></li>
@@ -35,7 +35,7 @@ export default function Footer() {
           </div>
 
           <div className="footer__services">
-            <h4>Products</h4>
+            <h3>Products</h3>
             <ul>
               <li>Custom Printed Roller Shades</li>
               <li>Blackout Blinds</li>
@@ -51,12 +51,12 @@ export default function Footer() {
           </div>
 
           <div className="footer__cta-col">
-            <h4>Get Started</h4>
-            <p>No prices listed — every blind is custom made to order.</p>
+            <h3>Get Started</h3>
+            <p>No prices listed. Every blind is custom made to order.</p>
             <Link href="/quote" className="btn btn--gold" style={{width:'100%',justifyContent:'center',marginBottom:'10px'}}>
               Get Your Free Estimate
             </Link>
-            <Link href="/custom-printed" className="btn btn--outline-white" style={{width:'100%',justifyContent:'center'}}>
+            <Link href="/custom-printed-blinds" className="btn btn--outline-white" style={{width:'100%',justifyContent:'center'}}>
               Shop Custom Printed
             </Link>
           </div>

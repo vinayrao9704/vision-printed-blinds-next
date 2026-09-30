@@ -33,9 +33,9 @@ function buildSummary(form: FormData): string {
   const lines = [
     `Name: ${get('name')}`,
     `Email: ${get('email')}`,
-    `Phone: ${get('phone') || '—'}`,
-    `Location: ${get('area') || '—'}`,
-    `Type of property: ${get('propertyType') || '—'}`,
+    `Phone: ${get('phone') || 'N/A'}`,
+    `Location: ${get('area') || 'N/A'}`,
+    `Type of property: ${get('propertyType') || 'N/A'}`,
     '',
     `Message:`,
     get('message'),
@@ -75,7 +75,7 @@ export async function POST(request: Request) {
       from: `Vision Printed Blinds Website <${RESEND_FROM_EMAIL}>`,
       to: toEmail,
       replyTo: `${fromName} <${fromEmail}>`,
-      subject: `New Quote Request — ${fromName}`,
+      subject: `New Quote Request from ${fromName}`,
       text: buildSummary(form),
     });
 

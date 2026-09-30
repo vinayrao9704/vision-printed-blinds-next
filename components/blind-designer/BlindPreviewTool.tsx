@@ -504,7 +504,7 @@ export default function BlindPreviewTool() {
                 <div className="bpt-review__btns">
                   <button className="btn btn--gold" onClick={confirmReviewWindow}>Confirm</button>
                   <button className="btn btn--outline-navy" onClick={adjustReviewWindow}>Adjust Window</button>
-                  {windows.length > 1 && <button className="pt-reset-btn" onClick={skipReviewWindow}>Not a window — skip</button>}
+                  {windows.length > 1 && <button className="pt-reset-btn" onClick={skipReviewWindow}>Not a window, skip</button>}
                 </div>
               </div>
             )}

@@ -18,7 +18,7 @@ export default function QuotePage() {
           <div className="page-breadcrumb"><Link href="/">Home</Link> &rsaquo; Get a Quote</div>
           <span className="section-tag section-tag--light">FREE &amp; NO OBLIGATION</span>
           <h1 className="page-hero__title">GET YOUR<br/><span className="text-gold">FREE ESTIMATE</span></h1>
-          <p className="page-hero__desc">Tell us about your windows and what you&apos;re looking for. We&apos;ll respond within one business day with a tailored quote — no pressure, no commitment.</p>
+          <p className="page-hero__desc">Tell us about your windows and what you&apos;re looking for. We&apos;ll respond within one business day with a tailored quote. No pressure, no commitment.</p>
         </div>
       </section>
 
@@ -55,8 +55,8 @@ export default function QuotePage() {
               <div className="qsb-card qsb-card--navy">
                 <div className="qsb-card__visual scene--cp-roller" style={{height:'130px',borderRadius:'var(--radius-md)',marginBottom:'18px',position:'relative'}}><div className="blind-slats"></div></div>
                 <h3 className="qsb-card__title" style={{color:'var(--white)'}}>CUSTOM PRINTED BLINDS</h3>
-                <p className="qsb-card__desc" style={{color:'rgba(255,255,255,0.7)'}}>Any photo, design, logo, or artwork — printed at full UV quality on commercial-grade blind fabric.</p>
-                <Link href="/custom-printed" className="btn btn--gold" style={{width:'100%',justifyContent:'center'}}>★ Shop Custom Printed</Link>
+                <p className="qsb-card__desc" style={{color:'rgba(255,255,255,0.7)'}}>Any photo, design, logo, or artwork, printed at full UV quality on commercial-grade blind fabric.</p>
+                <Link href="/custom-printed-blinds" className="btn btn--gold" style={{width:'100%',justifyContent:'center'}}>★ Shop Custom Printed</Link>
               </div>
 
               <div className="qsb-card">

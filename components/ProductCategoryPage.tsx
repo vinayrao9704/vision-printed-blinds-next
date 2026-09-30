@@ -64,7 +64,7 @@ export default function ProductCategoryPage({ category }: { category: ProductCat
         <div className="container">
           <div className="section-header animate-in">
             <span className="section-tag">GALLERY</span>
-            <h2 className="section-title">{category.name.toUpperCase()} IN <span style={{ color: 'var(--gold)' }}>EVERY ROOM</span></h2>
+            <h2 className="section-title">{category.name.toUpperCase()} IN <span style={{ color: '#8A5A00' }}>EVERY ROOM</span></h2>
           </div>
           <ImageCarousel slides={category.gallery} />
         </div>
@@ -75,7 +75,7 @@ export default function ProductCategoryPage({ category }: { category: ProductCat
         <div className="container">
           <div className="section-header animate-in">
             <span className="section-tag">OPTIONS</span>
-            <h2 className="section-title">TYPES OF <span style={{ color: 'var(--gold)' }}>{category.name.toUpperCase()}</span></h2>
+            <h2 className="section-title">TYPES OF <span style={{ color: '#8A5A00' }}>{category.name.toUpperCase()}</span></h2>
           </div>
           <div className="products-grid">
             {category.types.map((t) => (
@@ -102,7 +102,7 @@ export default function ProductCategoryPage({ category }: { category: ProductCat
         <div className="container">
           <div className="section-header animate-in">
             <span className="section-tag">SAMPLE COLOURS</span>
-            <h2 className="section-title">FIND YOUR <span style={{ color: 'var(--gold)' }}>SHADE</span></h2>
+            <h2 className="section-title">FIND YOUR <span style={{ color: '#8A5A00' }}>SHADE</span></h2>
           </div>
           <div className="colour-swatches">
             {category.colours.map((c) => (
@@ -112,7 +112,7 @@ export default function ProductCategoryPage({ category }: { category: ProductCat
               </div>
             ))}
           </div>
-          <p className="colour-swatches__note">Many more colours and textures available — ask us for samples.</p>
+          <p className="colour-swatches__note">Many more colours and textures available. Ask us for samples.</p>
         </div>
       </section>
 
@@ -121,7 +121,7 @@ export default function ProductCategoryPage({ category }: { category: ProductCat
         <div className="container">
           <div className="section-header animate-in">
             <span className="section-tag">HARDWARE</span>
-            <h2 className="section-title">HARDWARE &amp; <span style={{ color: 'var(--gold)' }}>OPERATING OPTIONS</span></h2>
+            <h2 className="section-title">HARDWARE &amp; <span style={{ color: '#8A5A00' }}>OPERATING OPTIONS</span></h2>
           </div>
           <div className="vp-grid">
             {category.hardware.map((h) => (

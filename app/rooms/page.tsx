@@ -5,7 +5,7 @@ import RoomTabs from '@/components/RoomTabs';
 
 export const metadata: Metadata = {
   title: 'Shop by Room',
-  description: 'Find the right custom blind for every room — living rooms, bedrooms, kitchens, offices, nurseries, and commercial spaces.',
+  description: 'Find the right custom blind for every room: living rooms, bedrooms, kitchens, offices, nurseries, and commercial spaces.',
 };
 
 const needCards = [

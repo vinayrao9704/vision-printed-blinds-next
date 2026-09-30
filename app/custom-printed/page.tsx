@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import { redirect } from 'next/navigation';
 import { products, tagLabels } from '@/lib/products';
 
 export const metadata: Metadata = {
   title: 'Custom Printed Blinds',
-  description: 'Any photo, design, logo, or artwork — printed at full UV quality on premium blind fabric and made to fit your exact window.',
+  description: 'Any photo, design, logo, or artwork, printed at full UV quality on premium blind fabric and made to fit your exact window.',
 };
 
 const GOLD_TAGS = new Set(['custom-print', 'motorized', 'smart-home']);
@@ -52,6 +53,11 @@ function ProductGrid({ items }: { items: typeof products }) {
 }
 
 export default function CustomPrintedPage() {
+  // This older product-grid layout has been replaced by the richer
+  // /custom-printed-blinds page. Redirecting rather than deleting keeps the
+  // page below intact so it can come back by simply removing this redirect.
+  redirect('/custom-printed-blinds');
+
   return (
     <>
       <section className="page-hero page-hero--custom">
@@ -61,7 +67,7 @@ export default function CustomPrintedPage() {
           <div className="page-breadcrumb"><Link href="/">Home</Link> &rsaquo; Custom Printed Blinds</div>
           <span className="section-tag section-tag--light">★ OUR SPECIALTY</span>
           <h1 className="page-hero__title">CUSTOM PRINTED<br/><span className="text-gold">BLINDS</span></h1>
-          <p className="page-hero__desc">Any photo, design, logo, or artwork — printed at full UV quality on premium blind fabric and made to fit your exact window.</p>
+          <p className="page-hero__desc">Any photo, design, logo, or artwork, printed at full UV quality on premium blind fabric and made to fit your exact window.</p>
           <Link href="/quote" className="btn btn--gold btn--lg btn--animated">Get Your Free Estimate</Link>
         </div>
       </section>

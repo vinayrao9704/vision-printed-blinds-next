@@ -20,7 +20,7 @@ export default function CustomPrintedBlindsPage() {
     <div className="cpb-page">
       <CustomPrintedHero heroImageSrc={heroImageSrc} />
 
-      {customPrintCategories.map((category) => {
+      {customPrintCategories.filter((category) => category.enabled !== false).map((category) => {
         const slides = category.images.map((file, i) => {
           const relPath = `images/custom-printed/${file}`;
           return {

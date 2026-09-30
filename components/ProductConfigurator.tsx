@@ -35,7 +35,7 @@ export default function ProductConfigurator({ product }: { product: Product }) {
     <section className="section pdp" style={{ background: 'var(--off-white)' }}>
       <div className="container">
         <div className="page-breadcrumb" style={{ marginBottom: '24px' }}>
-          <Link href="/">Home</Link>{product.category.includes('custom') && (<> &rsaquo; <Link href="/custom-printed">Custom Printed Blinds</Link></>)} &rsaquo; {product.name}
+          <Link href="/">Home</Link>{product.category.includes('custom') && (<> &rsaquo; <Link href="/custom-printed-blinds">Custom Printed Blinds</Link></>)} &rsaquo; {product.name}
         </div>
 
         <div className="pdp-grid">
@@ -72,10 +72,10 @@ export default function ProductConfigurator({ product }: { product: Product }) {
           {/* ===== Right: configurator ===== */}
           <div className="pdp-configure">
             <h1 className="pdp-title">{product.name}</h1>
-            <p className="pdp-subtitle">Configure your custom order — we&apos;ll send you a free, no-obligation quote.</p>
+            <p className="pdp-subtitle">Configure your custom order, and we&apos;ll send you a free, no-obligation quote.</p>
 
             <div className="pdp-card">
-              <h3 className="pdp-card__head"><span className="pdp-card__num">1</span> Select Color</h3>
+              <h2 className="pdp-card__head"><span className="pdp-card__num">1</span> Select Color</h2>
               <div className="pdp-colors" role="group" aria-label="Select color">
                 {COLOR_OPTIONS.map((c) => (
                   <button
@@ -93,7 +93,7 @@ export default function ProductConfigurator({ product }: { product: Product }) {
             </div>
 
             <div className="pdp-card">
-              <h3 className="pdp-card__head"><span className="pdp-card__num">2</span> Mount Type</h3>
+              <h2 className="pdp-card__head"><span className="pdp-card__num">2</span> Mount Type</h2>
               <div className="pdp-mount-grid" role="group" aria-label="Mount type">
                 <button type="button" className={`pdp-mount-card${mount === 'inside' ? ' active' : ''}`} aria-pressed={mount === 'inside'} onClick={() => setMount('inside')}>
                   <MountIcon mount="inside" />
@@ -109,7 +109,7 @@ export default function ProductConfigurator({ product }: { product: Product }) {
             </div>
 
             <div className="pdp-card">
-              <h3 className="pdp-card__head"><span className="pdp-card__num">3</span> Enter Measurements</h3>
+              <h2 className="pdp-card__head"><span className="pdp-card__num">3</span> Enter Measurements</h2>
               <div className="pdp-measure-grid">
                 <div className="pdp-field">
                   <label htmlFor="pdpWidth">Width (inches)</label>
@@ -126,13 +126,13 @@ export default function ProductConfigurator({ product }: { product: Product }) {
             <Link href={quoteHref} className="btn btn--gold btn--xl pdp-cta">Get Your Free Estimate</Link>
 
             <div className="pdp-info-card">
-              <h4>💬 Free Expert Consultation</h4>
+              <h3>💬 Free Expert Consultation</h3>
               <p>Not sure what size or fabric to choose? Talk to our team and find the perfect fit for your home.</p>
               <Link href="/quote">Chat with Us →</Link>
             </div>
 
             <div className="pdp-info-card">
-              <h4>🛡️ Measurement Support</h4>
+              <h3>🛡️ Measurement Support</h3>
               <p>We review every measurement with you before production starts, so there are no surprises when your blind arrives.</p>
             </div>
           </div>

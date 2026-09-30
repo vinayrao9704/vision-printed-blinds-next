@@ -5,14 +5,14 @@ import MeasureGuideInteractive from '@/components/MeasureGuideInteractive';
 
 export const metadata: Metadata = {
   title: 'How to Measure Your Windows',
-  description: 'An interactive guide to measuring your windows for custom blinds — inside mount vs outside mount, tools you need, and common mistakes to avoid.',
+  description: 'An interactive guide to measuring your windows for custom blinds: inside mount vs outside mount, tools you need, and common mistakes to avoid.',
 };
 
 const tools = [
-  { icon: '📏', title: 'STEEL TAPE MEASURE', text: 'Use a retractable steel tape, not a fabric or sewing tape — fabric stretches and throws off your numbers.' },
+  { icon: '📏', title: 'STEEL TAPE MEASURE', text: 'Use a retractable steel tape, not a fabric or sewing tape. Fabric stretches and throws off your numbers.' },
   { icon: '✏️', title: 'PENCIL & PAPER', text: "Sketch a quick outline of the window and jot down every measurement as you take it. Don't rely on memory." },
   { icon: '🪜', title: 'STEP STOOL', text: 'For taller windows, a stable step stool keeps you from stretching or eyeballing the top measurement.' },
-  { icon: '🙋', title: 'A SECOND PAIR OF HANDS', text: 'Optional, but helpful on wide windows — one person holds the tape at both ends for a straighter reading.' },
+  { icon: '🙋', title: 'A SECOND PAIR OF HANDS', text: 'Optional, but helpful on wide windows: one person holds the tape at both ends for a straighter reading.' },
 ];
 
 const MISTAKE_ICON = (
@@ -20,13 +20,13 @@ const MISTAKE_ICON = (
 );
 
 const mistakes = [
-  'Measuring only once — always double-check every number before ordering.',
+  'Measuring only once: always double-check every number before ordering.',
   'Using a cloth or fabric tape measure instead of a rigid steel one.',
   'Averaging the three width or height readings instead of taking the narrowest (inside mount) or widest coverage (outside mount).',
   'Forgetting to check mounting depth for an inside-mount blind, then finding it doesn\'t clear a handle or sill.',
-  'Rounding measurements to the nearest inch — order to the nearest 1/8".',
-  'Writing down height x width instead of the standard width x height — always list width first to avoid mix-ups.',
-  'Not confirming your exact minimum mounting depth with us before ordering — it varies by blind type.',
+  'Rounding measurements to the nearest inch instead of the nearest 1/8".',
+  'Writing down height x width instead of the standard width x height. Always list width first to avoid mix-ups.',
+  'Not confirming your exact minimum mounting depth with us before ordering, since it varies by blind type.',
 ];
 
 export default function MeasureGuidePage() {
@@ -53,7 +53,7 @@ export default function MeasureGuidePage() {
         <div className="container">
           <div className="section-header animate-in">
             <span className="section-tag">BEFORE YOU START</span>
-            <h2 className="section-title">WHAT YOU&apos;LL <span style={{color:'var(--gold)'}}>NEED</span></h2>
+            <h2 className="section-title">WHAT YOU&apos;LL <span style={{color:'#8A5A00'}}>NEED</span></h2>
           </div>
           <div className="why-grid">
             {tools.map(t => (
@@ -71,7 +71,7 @@ export default function MeasureGuidePage() {
         <div className="container">
           <div className="section-header animate-in">
             <span className="section-tag">INTERACTIVE GUIDE</span>
-            <h2 className="section-title">MEASURE ONCE,<br/><span style={{color:'var(--gold)'}}>FIT PERFECTLY</span></h2>
+            <h2 className="section-title">MEASURE ONCE,<br/><span style={{color:'#8A5A00'}}>FIT PERFECTLY</span></h2>
             <p className="section-desc">Toggle your mounting style below to see exactly where and how to measure your windows.</p>
           </div>
           <MeasureGuideInteractive />
@@ -82,7 +82,7 @@ export default function MeasureGuidePage() {
         <div className="container">
           <div className="section-header animate-in">
             <span className="section-tag">AVOID THESE</span>
-            <h2 className="section-title">COMMON MEASURING <span style={{color:'var(--gold)'}}>MISTAKES</span></h2>
+            <h2 className="section-title">COMMON MEASURING <span style={{color:'#8A5A00'}}>MISTAKES</span></h2>
           </div>
           <div className="mistakes-wrap">
             <div className="qsb-card">
@@ -104,10 +104,10 @@ export default function MeasureGuidePage() {
         <div className="container cta-final__inner">
           <span className="section-tag section-tag--light">NOT SURE?</span>
           <h2 className="section-title section-title--white">WE&apos;LL MEASURE<br/><span style={{color:'var(--gold)'}}>IT FOR YOU</span></h2>
-          <p className="section-desc section-desc--light">Request a free consultation and one of our team members will measure your windows in person — no charge, no obligation.</p>
+          <p className="section-desc section-desc--light">Request a free consultation and one of our team members will measure your windows in person. No charge, no obligation.</p>
           <div className="cta-final__btns">
             <Link href="/quote" className="btn btn--gold btn--xl btn--animated">Get Your Free Estimate</Link>
-            <Link href="/custom-printed" className="btn btn--outline-white btn--xl">★ Shop Custom Printed</Link>
+            <Link href="/custom-printed-blinds" className="btn btn--outline-white btn--xl">★ Shop Custom Printed</Link>
           </div>
         </div>
       </section>

@@ -6,22 +6,22 @@ import Link from 'next/link';
 type Mount = 'inside' | 'outside';
 
 const insideSteps = [
-  { title: 'Measure Casing Width', text: 'Measure the exact width inside the casing at 3 spots: top, middle, and bottom. Record the smallest width — this is what your blind will be cut to.' },
+  { title: 'Measure Casing Width', text: 'Measure the exact width inside the casing at 3 spots: top, middle, and bottom. Record the smallest width. This is what your blind will be cut to.' },
   { title: 'Measure Casing Height', text: 'Measure the exact height inside the casing at 3 spots: left, middle, and right. Record the largest height, so the blind fully covers the window.' },
-  { title: 'Verify Casing Depth', text: 'Measure the depth of your recess. Required minimum depth depends on your blind type — check it below before ordering.' },
+  { title: 'Verify Casing Depth', text: 'Measure the depth of your recess. Required minimum depth depends on your blind type. Check it below before ordering.' },
 ];
 
 const outsideSteps = [
   { title: 'Decide Your Overlap', text: 'Outside mount blinds hang on the wall or trim outside the window. Add roughly 2–4" of overlap on each side of the opening for better light control and privacy.' },
   { title: 'Measure Total Width', text: 'Measure the full width you want the blind to cover, including your chosen overlap on both sides.' },
-  { title: 'Measure Drop Height', text: 'Measure from where the top of the blind will mount down to where you want it to end — typically 3–4" below the sill, or to the floor.' },
+  { title: 'Measure Drop Height', text: 'Measure from where the top of the blind will mount down to where you want it to end, typically 3–4" below the sill, or to the floor.' },
 ];
 
 const rules = [
   'Always use a heavy metal/steel tape measure. Never use a flexible fabric tape ruler.',
   'Measure down to the nearest 1/8th of an inch. Do not round up or down to whole inches.',
   'Write down dimensions as Width x Height (W x H) to avoid ordering inverted blinds.',
-  'Measure at three points, not one — frames are rarely perfectly straight.',
+  'Measure at three points, not one, since frames are rarely perfectly straight.',
 ];
 
 const blindTypes = [
@@ -194,7 +194,7 @@ export default function MeasureGuideInteractive() {
           <p className="mg-steps-intro">
             {mount === 'inside'
               ? 'Inside mount window treatments sit flush inside the window casing, showcasing your frame’s trim. They offer the cleanest, most built-in appearance.'
-              : 'Outside mount blinds hang on the wall or trim above the window, covering the whole opening and then some — ideal for shallow recesses or maximum blackout.'}
+              : 'Outside mount blinds hang on the wall or trim above the window, covering the whole opening and then some, ideal for shallow recesses or maximum blackout.'}
           </p>
 
           <StepList steps={mount === 'inside' ? insideSteps : outsideSteps} />
@@ -218,7 +218,7 @@ export default function MeasureGuideInteractive() {
               </select>
               {blindType && (
                 <p className="mg-depth-result">
-                  Minimum casing depth for <strong>{blindType}</strong> depends on the fabric and hardware you choose — <Link href="/quote">request your free estimate</Link> and we&apos;ll confirm your exact clearance before you order, or ask for a free in-person measurement.
+                  Minimum casing depth for <strong>{blindType}</strong> depends on the fabric and hardware you choose. <Link href="/quote">Request your free estimate</Link> and we&apos;ll confirm your exact clearance before you order, or ask for a free in-person measurement.
                 </p>
               )}
             </div>

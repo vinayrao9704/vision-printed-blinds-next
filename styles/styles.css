@@ -87,7 +87,7 @@ input, select, textarea { font-family: inherit; }
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: #8A5A00;
   background: rgba(245,165,35,0.1);
   border: 1px solid rgba(245,165,35,0.25);
   padding: 5px 14px;
@@ -258,7 +258,7 @@ input, select, textarea { font-family: inherit; }
   margin-right: 32px;
   flex-shrink: 0;
 }
-.nav__logo-img { height: 40px; width: auto; display: block; }
+.nav__logo-img { height: 46px; width: auto; display: block; }
 .nav__logo-primary {
   font-family: var(--font-display);
   font-size: 22px;
@@ -277,6 +277,7 @@ input, select, textarea { font-family: inherit; }
 .nav__links {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 2px;
   flex: 1;
   height: 100%;
@@ -1026,7 +1027,7 @@ input, select, textarea { font-family: inherit; }
   border-radius: 100px;
 }
 .pcard__tag--gold {
-  color: var(--gold-dark);
+  color: #8A5A00;
   background: rgba(245,165,35,0.1);
   border-color: rgba(245,165,35,0.3);
 }
@@ -1615,7 +1616,7 @@ input, select, textarea { font-family: inherit; }
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: var(--radius-xl);
 }
-.gallery-cta h3 {
+.gallery-cta h2 {
   font-family: var(--font-display);
   font-size: 28px;
   font-weight: 900;
@@ -2005,7 +2006,7 @@ input, select, textarea { font-family: inherit; }
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: #8A5A00;
   margin-bottom: 12px;
 }
 .footer__location { font-size: 13px; color: rgba(0,0,0,0.55); line-height: 1.7; margin-bottom: 16px; }
@@ -2027,15 +2028,15 @@ input, select, textarea { font-family: inherit; }
 }
 .social-btn svg { width: 16px; height: 16px; }
 .social-btn:hover { background: var(--gold); color: var(--navy-dark); }
-.footer__nav h4,
-.footer__services h4,
-.footer__cta-col h4 {
+.footer__nav h3,
+.footer__services h3,
+.footer__cta-col h3 {
   font-family: var(--font-display);
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(0,0,0,0.45);
+  color: var(--text-mid);
   margin-bottom: 20px;
 }
 .footer__nav ul li { margin-bottom: 6px; }
@@ -2060,7 +2061,7 @@ input, select, textarea { font-family: inherit; }
   align-items: center;
   text-align: center;
 }
-.footer__bottom p { font-size: 11px; color: rgba(0,0,0,0.4); }
+.footer__bottom p { font-size: 11px; color: var(--text-mid); }
 
 /* ================================================================
    PRODUCT DETAIL PAGE
@@ -2170,7 +2171,7 @@ input, select, textarea { font-family: inherit; }
 }
 .pdp-mount-card svg { width: 28px; height: 28px; color: var(--text-light); }
 .pdp-mount-card strong { font-size: 13px; color: var(--navy); }
-.pdp-mount-card span { font-size: 11px; color: var(--text-light); }
+.pdp-mount-card span { font-size: 11px; color: var(--text-mid); }
 .pdp-mount-card:hover { border-color: var(--royal); }
 .pdp-mount-card.active { border-color: var(--navy); background: var(--navy); }
 .pdp-mount-card.active svg { color: var(--gold); }
@@ -2180,7 +2181,7 @@ input, select, textarea { font-family: inherit; }
 .pdp-measure-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .pdp-field label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-mid); margin-bottom: 6px; }
 .pdp-measure-hint { font-size: 12px; color: var(--text-light); margin-top: 12px; }
-.pdp-measure-hint a { color: var(--gold-dark); font-weight: 700; }
+.pdp-measure-hint a { color: #8A5A00; font-weight: 700; }
 
 .pdp-cta { width: 100%; justify-content: center; margin-bottom: 18px; }
 
@@ -2191,9 +2192,9 @@ input, select, textarea { font-family: inherit; }
   padding: 20px;
   margin-bottom: 14px;
 }
-.pdp-info-card h4 { font-family: var(--font-display); font-size: 13px; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+.pdp-info-card h3 { font-family: var(--font-display); font-size: 13px; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
 .pdp-info-card p { font-size: 13px; color: var(--text-light); line-height: 1.6; margin-bottom: 8px; }
-.pdp-info-card a { font-size: 13px; font-weight: 700; color: var(--gold-dark); }
+.pdp-info-card a { font-size: 13px; font-weight: 700; color: #8A5A00; }
 
 @media (max-width: 1024px) {
   .pdp-grid { grid-template-columns: 1fr; }
@@ -2896,7 +2897,27 @@ input, select, textarea { font-family: inherit; }
   .mega-menu__body > .mega-col:nth-child(4) { display: none; }
 }
 
-@media (max-width: 1024px) {
+/* Medium screens: keep the full desktop link row instead of jumping
+   straight to the hamburger, just shrink text/padding/gaps so the same
+   7 items + the estimate button fit in less width. Only once even this
+   compact form can't fit (see the narrower breakpoint below) does it
+   fall back to the hamburger. */
+@media (max-width: 1750px) {
+  .nav__container { padding: 0 16px; }
+  .nav__logo { margin-right: 16px; }
+  .nav__logo-img { height: 38px; }
+  .nav__links { gap: 0; }
+  .nav__link { font-size: 10.5px; padding: 8px 8px; gap: 3px; }
+  .nav__chevron { width: 8px; height: 8px; }
+  .nav__actions { margin-left: 8px; }
+  .nav__actions .btn { font-size: 10.5px; padding: 10px 14px; }
+}
+
+/* Only below this point does even the compact row above stop fitting —
+   real browser font rendering measures a bit wider than headless test
+   rendering, so this uses a generous margin rather than the bare
+   minimum measured width. */
+@media (max-width: 1180px) {
   .nav__container {
     position: relative;
     display: flex;
@@ -2912,12 +2933,15 @@ input, select, textarea { font-family: inherit; }
     top: 50%;
     transform: translate(-50%, -50%);
   }
-  .nav__logo-img { height: 28px; }
+  .nav__logo-img { height: 32px; }
   .nav__hamburger { display: flex; order: 1; margin-left: 0; }
   .nav__hamburger span { width: 20px; }
   .nav__actions { display: none; }
   .nav__mobile-call { display: flex; order: 3; margin-left: auto; }
   .nav__mobile { display: block; }
+}
+
+@media (max-width: 1024px) {
   .hero__container { grid-template-columns: 1fr; }
   .hero__visual { display: none; }
   .business__inner { grid-template-columns: 1fr; }

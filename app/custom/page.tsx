@@ -5,7 +5,7 @@ import BlindPreviewTool from '@/components/blind-designer/BlindPreviewTool';
 
 export const metadata: Metadata = {
   title: 'Custom Printed Blinds Preview Tool',
-  description: 'Upload a photo of your room and your design — our tool automatically detects your window and fits your custom blind to it with realistic perspective and lighting.',
+  description: 'Upload a photo of your room and your design, and our tool automatically detects your window and fits your custom blind to it with realistic perspective and lighting.',
 };
 
 const designThemes = [
@@ -39,7 +39,7 @@ export default function CustomPage() {
           <div className="page-breadcrumb"><Link href="/">Home</Link> &rsaquo; Custom Printing</div>
           <span className="section-tag section-tag--light">OUR SIGNATURE PRODUCT</span>
           <h1 className="page-hero__title">CUSTOM PRINTED<br/><span className="text-gold">BLINDS</span></h1>
-          <p className="page-hero__desc">Upload a photo of your room — we&apos;ll automatically detect your window and fit your design to it with real perspective, lighting, and shadow. Upload your image below to see a live preview before you order.</p>
+          <p className="page-hero__desc">Upload a photo of your room, and we&apos;ll automatically detect your window and fit your design to it with real perspective, lighting, and shadow. Upload your image below to see a live preview before you order.</p>
           <a href="#preview-tool" className="btn btn--gold btn--lg btn--animated">Try the Preview Tool ↓</a>
         </div>
       </section>
@@ -50,7 +50,7 @@ export default function CustomPage() {
           <div className="section-header">
             <span className="section-tag">SEE IT BEFORE YOU ORDER</span>
             <h2 className="section-title">DESIGN PREVIEW TOOL</h2>
-            <p className="section-subtitle">Automatic window detection, perspective-accurate fitting, and a before/after comparison — live in your browser. No account needed.</p>
+            <p className="section-subtitle">Automatic window detection, perspective-accurate fitting, and a before/after comparison, live in your browser. No account needed.</p>
           </div>
           <BlindPreviewTool />
         </div>
@@ -62,7 +62,7 @@ export default function CustomPage() {
           <div className="section-header">
             <span className="section-tag">CHOOSE A DESIGN THEME</span>
             <h2 className="section-title">WHAT WILL YOU PRINT?</h2>
-            <p className="section-subtitle">Browse popular design categories. Upload any of these ideas — or any image of your own — into the preview tool above.</p>
+            <p className="section-subtitle">Browse popular design categories. Upload any of these ideas, or any image of your own, into the preview tool above.</p>
           </div>
           <div className="design-grid">
             {designThemes.map(d => (
