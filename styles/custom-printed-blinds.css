@@ -137,7 +137,16 @@
 .cpb-section__gallery { position: relative; }
 .cpb-gallery {
   position: relative;
-  height: clamp(460px, 52vw, 620px);
+  /* Height keyed to the viewport (52vw) rather than to this element's own
+     width caused a mismatch on medium screens: the frames inside are all
+     positioned/sized as percentages of THIS container (which is only half
+     the viewport, per the 2-column grid above), but the container's own
+     height didn't track that same width — so at in-between widths the
+     scattered collage no longer matched the box it was scattered inside,
+     and could spill past its section. aspect-ratio ties height to this
+     element's actual rendered width instead, at the same ~584:620 (~0.94)
+     ratio the old rule produced at typical desktop widths. */
+  aspect-ratio: 0.94;
 }
 .cpb-frame {
   position: absolute;
@@ -296,6 +305,7 @@
      No scroll-snap here — the strip auto-drifts continuously (see
      GalleryWall.tsx), and snap points would fight that constant motion. */
   .cpb-gallery {
+    aspect-ratio: auto;
     height: auto;
     display: flex;
     flex-wrap: nowrap;
