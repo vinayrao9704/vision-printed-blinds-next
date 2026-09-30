@@ -13,7 +13,12 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding-top: var(--nav-h);
+  /* Vertical centering alone isn't enough breathing room on shorter/medium
+     viewports, where it can leave content pinned right under the fixed
+     nav — this guarantees a minimum gap the way every other page-hero's
+     top-down padding already does. */
+  padding-top: calc(var(--nav-h) + 32px);
+  padding-bottom: 32px;
 }
 .cpb-hero__bg {
   position: absolute;
